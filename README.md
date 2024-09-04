@@ -1,2 +1,5 @@
-# Football-Shirt-Designer
-A fully functioning football shirt designer with names, numbers, badges and more!
+# Notaí
+
+https://www.npmjs.com/package/http-server
+
+https://www.youtube.com/watch?v=oa9m8321_nw

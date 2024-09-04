@@ -1,0 +1,1726 @@
+body, html {
+  font-family: 'IBM Plex Sans', sans-serif;
+  margin: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background-color:  #f0f8ff;
+}
+.icon {
+  font-size: 24px; /* Set icon size */
+  color: #090909; /* Change color to blue or desired color */
+  transition: color 0.3s; /* Smooth color transition on hover */
+}
+.s_icon {
+  font-size: 24px; /* Set icon size */
+  color: #090909; /* Change color to blue or desired color */
+  transition: color 0.3s; /* Smooth color transition on hover */
+}
+.b_icon {
+  font-size: 24px; /* Set icon size */
+  color: #090909; /* Change color to blue or desired color */
+  transition: color 0.3s; /* Smooth color transition on hover */
+}
+
+.scene {
+  /* Our 3D world, we want this to fill the window  */
+  z-index: 1;
+  position: fixed;
+  margin-top: 30px;
+  left: 11%;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  
+  
+}
+
+.logo {
+  /* Where is say Kit Builder at the top left */
+  z-index: 2000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-right: 25px;
+  padding-top: 25px;
+  padding-left: 95px;
+  fill: black;
+  font-size: 56px;
+  font-weight: 600;
+}
+
+.helpButton {
+  /* The ? mark at the top right */
+  z-index: 2000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-right: 25px;
+  padding-top: 25px;
+  padding-left: 100px;
+
+  fill: black;
+  font-size: 56px;
+  font-weight: 600;
+}
+
+
+.rotateRight {
+  /* Both rotates don't work but are placed either side of the model */
+  z-index: 2000;
+  position: fixed;
+  top: 45%;
+  right: 21%;
+  fill: black;
+  font-size: 100px;
+  font-weight: 100;
+}
+
+.rotateLeft {
+  /* Both rotates don't work but are placed either side of the model */
+  z-index: 2000;
+  position: fixed;
+  top: 45%;
+  left: 43%;
+  fill: black;
+  font-size: 100px;
+  font-weight: 100;
+}
+
+/* Use this next part when we get the rotate buttons working */
+
+/*
+.logo, .helpButton, .rotateRight, .rotateLeft {
+  color: black;
+  -webkit-transition: color 0.5s linear;
+  -ms-transition: color 0.5s linear;
+  transition: color 0.5s linear;
+}
+
+.logo:hover, .helpButton:hover, .rotateRight:hover, .rotateLeft:hover {
+  color: blue;
+  cursor: pointer;
+}
+*/
+
+.logo, .helpButton, .paletteButton,.sizeButton {
+  color: black;
+  -webkit-transition: color 0.5s linear;
+  transition: color 0.5s linear;
+}
+
+.logo:hover, .helpButton:hover, .paletteButton:hover ,.sizeButton:hover{
+  color: blue;
+  cursor: pointer;
+}
+
+.rotateRight, .rotateLeft {
+  color: #e8e8e8;
+}
+
+.rotateRight:hover, .rotateLeft:hover {
+  cursor: default;
+}
+
+/* Next is styles for help window pop-out */
+
+.helpWindow {
+  z-index: 3000;
+  position: fixed;
+  width: 25%;
+  height: 100%;
+  right: -100%;
+  overflow-x: hidden;
+  background-color: #f0f8ff; /* Alice Blue background for a soft look */
+  /* background: #054ada; */
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+.helpWindow1 {
+  z-index: 3000;
+  position: fixed;
+  width: 25%;
+  height: 100%;
+  right: -100%;
+  overflow-x: hidden;
+  background-color: #f0f8ff; /* Alice Blue background for a soft look */
+  /* background: #054ada; */
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+.helpActive {
+  /* right: 250px; */
+  width: 25%;
+  right: 0px;
+  box-shadow: -5px 0px 18px #888888;
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+.basketWindow {
+  z-index: 3000;
+  position: fixed;
+  width: 25%;
+  height: 100%;
+  right: -100%;
+  overflow-x: hidden;
+  background-color: #f0f8ff; /* Alice Blue background for a soft look */
+  /* background: #054ada; */
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+.basketWindow1 {
+  z-index: 3000;
+  position: fixed;
+  width: 25%;
+  height: 100%;
+  right: -100%;
+  overflow-x: hidden;
+  background-color: #f0f8ff; /* Alice Blue background for a soft look */
+  /* background: #054ada; */
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+.basketActive {
+  /* right: 250px; */
+  width: 25%;
+  right: 0px;
+  box-shadow: -5px 0px 18px #888888;
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+.sizeWindow {
+  z-index: 3000;
+  position: fixed;
+  width: 25%;
+  height: 100%;
+  right: -100%;
+  overflow-x: hidden;
+  background-color: #f0f8ff; /* Alice Blue background for a soft look */
+  /* background: #054ada; */
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+.sizeWindow1 {
+  z-index: 3000;
+  position: fixed;
+  width: 25%;
+  height: 100%;
+  right: -100%;
+  overflow-x: hidden;
+  background-color: #f0f8ff; /* Alice Blue background for a soft look */
+  /* background: #054ada; */
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+.sizeActive {
+  /* right: 250px; */
+  width: 25%;
+  right: 0px;
+  box-shadow: -5px 0px 18px #888888;
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+.windowHeader {
+  font-size: 50px;
+  font-weight: 600;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  color: black;
+  font-weight: 800;
+  margin-bottom: 50px;
+  letter-spacing: 2px;
+}
+
+.windowText {
+  font-size: 20px;
+  font-weight: 100;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  color: black;
+  font-weight: 500;
+  margin-bottom: 0px;
+  letter-spacing: 2px;
+}
+
+.helpChevron {
+  stroke: black;
+  
+  position: absolute;
+  right: 80px;
+  top: 58px;
+  /* color: white; */
+  -webkit-transition: stroke 0.5s linear;
+  transition: stroke 0.5s linear;
+}
+
+.helpChevron:hover {
+  stroke: black;
+  cursor: pointer;
+}
+
+.chevronSvg {
+    width: 2.8vw;
+}
+
+.paletteChevronSvg {
+  width: 2vw;
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+.paletteChevronSvg:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+/* Next is all palette */
+
+.paletteHeader {
+  z-index: 4001; /* Ensure this is above the selector */
+  position: fixed;
+  padding-right: 25px;
+  padding-top: 25px;
+  padding-left: 45px;
+  fill: black;
+  font-size: 40px;
+  font-weight: 400;
+}
+
+.palette {
+  display: none; /* Make it hidden by default */
+  position: fixed;
+  z-index: 4000; /* Should be higher than the selector window */
+  background-color: rgb(255, 255, 255); /* Semi-transparent white */
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px; /* Rounded corners for a softer appearance */
+}
+
+.paletteActive {
+  
+  left: 100px; /* Position as needed */
+ 
+  top: 15%;
+  width: 35%;
+  height: 70%;
+  
+  border: 1.5px dashed blue;
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+.paletteChevron {
+  stroke: black;
+  position: absolute;
+  right: 50px;
+  top: 10px;
+  -webkit-transition: stroke 0.5s linear;
+  transition: stroke 0.5s linear;
+}
+
+.paletteChevron:hover {
+  stroke: blue;
+  cursor: pointer;
+}
+
+.paletteChevronClosed {
+  -ms-transform: rotate(-90deg); /* IE 9 */
+  -webkit-transform: rotate(-90deg); /* Safari 3-8 */
+  transform: rotate(-90deg);
+}
+
+.paletteChevronOpen {
+  top: 35px;
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Safari 3-8 */
+  transform: rotate(90deg);
+}
+
+.paletteRows {
+  position: absolute;
+  left: 10px;
+  top: 80px;
+  -webkit-transition: stroke 0.5s linear;
+  transition: stroke 0.5s linear;
+}
+
+.colourBox svg {
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
+.selectorWindow {
+  z-index: 3000; /* Keep this high, but lower than the palette */
+  position: fixed;
+  box-sizing: border-box;
+  padding: 20px; /* Increase padding for a more spacious look */
+  left: 40px;
+  top: 15%; /* Adjust as needed */
+  width: 36%;
+  height: 80%;
+  
+  background-color: #f0f8ff; /* Alice Blue background for a soft look */
+  border: 2px solid #4682B4; /* Steel Blue solid border */
+  border-radius: 10px; /* Rounded corners for a softer appearance */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  display: flex; /* Use flexbox for centering */
+  flex-direction: column; /* Arrange items in a column */
+  align-items: center; /* Center items horizontally */
+  justify-content: flex-start; /* Start from the top */
+  overflow-y: auto; /* Enable vertical scrolling if needed */
+}
+.selectorWindow1 {
+  z-index: 3000; /* Keep this high, but lower than the palette */
+  position: fixed;
+  box-sizing: border-box;
+  padding: 20px; /* Increase padding for a more spacious look */
+  left: 50px;
+  top: 15%; /* Adjust as needed */
+  width: 36%;
+  height: 80%;
+  
+  background-color: #f0f8ff; /* Alice Blue background for a soft look */
+  border: 2px solid #4682B4; /* Steel Blue solid border */
+  border-radius: 10px; /* Rounded corners for a softer appearance */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  display: flex; /* Use flexbox for centering */
+  flex-direction: column; /* Arrange items in a column */
+  align-items: center; /* Center items horizontally */
+  justify-content: flex-start; /* Start from the top */
+  overflow-y: auto; /* Enable vertical scrolling if needed */
+}
+
+.resizeHandle {
+  width: 10px;
+  height: 100%;
+  background-color: #4682B4; /* Same color as your border for a unified look */
+  cursor: ew-resize; /* Cursor changes to indicate resizing horizontally */
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 3001; /* Slightly above the selector window */
+}
+
+
+.resizeActive {
+  width: 10px;
+  height: 100%;
+  background-color: #4682B4; /* Same color as your border for a unified look */
+  cursor: ew-resize; /* Cursor changes to indicate resizing horizontally */
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3001; /* Slightly above the selector window */
+}
+
+
+
+#selectStyleButton {
+  z-index: 5000; /* Higher z-index for this specific button */
+  background-color: #6A5ACD; /* Slate Blue background for differentiation */
+}
+
+#selectStyleButton:hover {
+  background-color: #7B68EE; /* Lighter Slate Blue on hover */
+}
+
+.selectorWindow:hover {
+  border: 2px solid #5F9EA0; /* Change to a Cadet Blue border on hover */
+}
+.selectorWindow1:hover {
+  border: 2px solid #5F9EA0; /* Change to a Cadet Blue border on hover */
+}
+
+
+.selectorText {
+  width: 100%;
+  height: 15%;
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+  margin-bottom: 5px; /* Default spacing between texts */
+  padding-top: 20px;
+}
+
+/* Expanded state */
+.selectorWindow.open {
+  display: block; /* Show the window */
+  max-height: 500px; /* Set maximum height to display contents */
+}
+
+.selectorContent {
+  display: none; /* Hide by default */
+  opacity: 0; /* Fully transparent by default */
+  transition: opacity 0.3s ease-in-out; /* Smooth transition for opacity */
+}
+
+.selectorContent.open {
+  display: block; /* Show when open */
+  opacity: 1; /* Fully visible when open */
+}
+
+.styleItem {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Change to inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+.extrasItem {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Change to inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+.rightsleeveItem {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Change to inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+.leftsleeveItem {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Change to inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+.backcolourItem {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Change to inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+.backcolourItem1 {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Change to inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+.backcolourItem2 {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Change to inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+.sponsorItem {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+}
+.backsponsorItem {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+}
+.circlebox {
+  
+  border-radius: 15px; /* Rounded corners */
+  background-color: #e0f7fa;
+  padding: 15px; /* Padding inside the box */
+  margin: 10px auto; /* Center the box horizontally and add vertical margin */
+  width: 80%; /* Make the box wider (80% of its container's width) */
+  max-width: 600px; /* Optional: Limit the maximum width to 600px */
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow for depth */
+  text-align: center; /* Center the text inside the box */
+}
+
+.smallheader{
+  color: #333; /* Dark gray text color for better readability */
+  font-size: 22px; /* Increase font size for prominence */
+  font-weight: 600; /* Bold text for better visibility */
+  
+}
+.centralise{
+  text-align: center;
+}
+/* Adjust item styles */
+.s_adjustItem {
+  position: relative; /* Keep relative positioning */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 10px;     /* Increase padding for a better click area */
+  margin: 5px;       /* Margin to separate icons */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Change to inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+
+.s_sizeItem {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  display: inline-flex; /* Use inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+}
+.bs_sizeItem {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  display: inline-flex; /* Use inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+}
+/* Adjust item styles */
+.b_adjustItem {
+  position: relative; /* Keep relative positioning */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 10px;     /* Increase padding for a better click area */
+  margin: 5px;       /* Margin to separate icons */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Change to inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+
+.b_sizeItem {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Use inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+.colorSquare {
+  width: 25px; /* Width of the square */
+  height: 25px; /* Height of the square */
+  border-radius: 4px; /* Optional: rounded corners */
+  margin: 0 auto; /* Center the square within the colourItem */
+}
+.sizeItem {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Use inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+
+.colourItem {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Use inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+.colourItem2 {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Use inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+.colourItem1 {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Use inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+.badgeItem {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Use inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+/* Adjust item styles */
+.adjustItem {
+  position: relative; /* Keep relative positioning */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 10px;     /* Increase padding for a better click area */
+  margin: 5px;       /* Margin to separate icons */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Change to inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+
+/* Hover effect */
+.adjustItem:hover {
+  border-color: #007bff; /* Change border color on hover */
+}
+.backcolourItem1:hover {
+  border-color: #007bff; /* Change border color on hover */
+}
+.backcolourItem2:hover {
+  border-color: #007bff; /* Change border color on hover */
+}
+.backItem1:hover {
+  border-color: #007bff; /* Change border color on hover */
+}
+.backItem2:hover {
+  border-color: #007bff; /* Change border color on hover */
+}
+
+/* Optional: style for the icon */
+.icon {
+  font-size: 24px; /* Set icon size */
+  color: #007bff; /* Change color to blue or desired color */
+  transition: color 0.3s; /* Smooth color transition on hover */
+}
+
+/* Change icon color on hover */
+.adjustItem:hover .icon {
+  color: #0056b3; /* Darker blue on hover */
+}
+
+/* Container styles */
+#logoadjustList {
+  display: flex; /* Use flexbox for the container */
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  justify-content: center; /* Center the icons horizontally */
+  padding: 10px; /* Add padding to the container */
+}
+
+.logoItem {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Use inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+.nobadgeItem {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Use inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+.sponsorItem {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Use inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+.backItem {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Use inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+.backadjustItem {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Use inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+.backadjustItem2 {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Use inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+.backItem1 {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Use inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+.backItem2 {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Use inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+.ghostimageItem {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Use inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+.backadjustItem1 {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Use inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+.sponsorItemimg {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Use inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+
+.backsponsorItemimg {
+  position: relative; /* Change position to relative, absolute, or fixed */
+  z-index: 6001;     /* Keep the z-index */
+  padding: 5px;      /* Add some padding */
+  margin: 2px 0;     /* Spacing between items */
+  cursor: pointer;    /* Pointer cursor on hover */
+  border: 1px solid transparent; /* Transparent border */
+  transition: border-color 0.3s ease; /* Smooth transition for border */
+  display: inline-flex; /* Use inline-flex to align items next to each other */
+  flex-direction: column; /* Stack icons vertically within each item */
+  align-items: center; /* Center icons horizontally */
+}
+
+
+
+
+.logoItem.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+.ghostimageItem.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+.leftsleeveItem.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+.rightsleeveItem.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+.sponsorItemimg.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+.sponsorItem.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+.backsponsorItemimg.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+.backsponsorItem.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+.s_sizeItem.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+.bs_sizeItem.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+.nobadgeItem.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+
+.inputField {
+  margin: 10px 0; /* Space between fields */
+}
+
+.inputField label {
+  display: block; /* Make label block to have input below */
+  margin-bottom: 5px; /* Space between label and input */
+}
+
+#BebasNeue {
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+#Oswald {
+  font-family: 'Oswald', sans-serif;
+}
+
+#Anton {
+  font-family: 'Anton', sans-serif;
+}
+
+#Impact {
+  font-family: 'Impact', sans-serif;
+}
+
+#RobotoCondensed {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+#Montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+#bebasNeueItem {
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+#oswaldItem {
+  font-family: 'Oswald', sans-serif;
+}
+
+#antonItem {
+  font-family: 'Anton', sans-serif;
+}
+
+#impactItem {
+  font-family: 'Impact', sans-serif;
+}
+
+#robotoCondensedItem {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+#montserratItem {
+  font-family: 'Montserrat', sans-serif;
+}
+
+#latoItem {
+  font-family: 'Lato', sans-serif;
+}
+
+#righteousItem {
+  font-family: 'Righteous', sans-serif;
+}
+
+
+#Lato {
+  font-family: 'Lato', sans-serif;
+}
+
+#Righteous {
+  font-family: 'Righteous', sans-serif;
+}
+
+.inputField input[type="text"] {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 80%; /* Full width of parent */
+}
+
+
+#playerInfoBox {
+  padding: 10px;
+  border: 1px solid #ccc; /* Optional: border for input box */
+  border-radius: 4px; /* Optional: rounded corners */
+  margin-bottom: 20px; /* Space below the player info box */
+}
+
+.badgeItem.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+.styleItem.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+.colourItem.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+.colourItem2.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+.backcolourItem.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+.backcolourItem1.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+.backcolourItem2.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+.sizeItem.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+.b_sizeItem.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+.backItem.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+.backItem2.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+.backadjustItem.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+.backadjustItem2.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+.backItem1.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+.backadjustItem1.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+.extrasItem.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+.colourItem1.selected {
+  border-color: blue;     /* Blue border when selected */
+  background-color: #5F9EA0; /* Light blue background */
+}
+
+#imageUpload { 
+  margin-top: 10px;
+}
+.styleItem img {
+  width: 100px; /* Set the width of the images to 30 pixels */
+  height: auto; /* Maintain aspect ratio */
+}
+.extrasItem img {
+  width: 100px; /* Set the width of the images to 30 pixels */
+  height: auto; /* Maintain aspect ratio */
+}
+.leftsleeveItem img {
+  width: 100px; /* Set the width of the images to 30 pixels */
+  height: auto; /* Maintain aspect ratio */
+}
+.rightsleeveItem img {
+  width: 100px; /* Set the width of the images to 30 pixels */
+  height: auto; /* Maintain aspect ratio */
+}
+/* Apply the .btn-76 styles to the buttons */
+#selectColorButton,
+#selectSponsorButton,
+#selectBadgeButton,
+#selectLogoButton,
+#selectStyleButton,
+#selectBackButton,#selectExtrasButton,
+#View_All,#Make_Order {
+    --neon: #0ea5e9; /* Neon color */
+    box-sizing: border-box;
+    display: inline-block; /* Display buttons inline */
+    font-weight: 900;
+    font-size:14px;
+    outline: 3px solid #fff;
+    outline-offset: -4px;
+    overflow: hidden;
+    padding: 0.8rem 2rem;
+    position: relative;
+    margin: 3px auto;
+    text-transform: uppercase;
+    transition: 0.2s linear 0.1s;
+    background-color: #000000; /* Default background color */
+    color: #fff; /* Text color */
+    cursor: pointer;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+        Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+}
+#basket {
+  --neon: #0ea5e9; /* Neon color */
+  
+  display: inline-block; /* Display buttons inline */
+  font-weight: 900;
+  font-size:14px;
+  outline: 0px solid #fff;
+  outline-offset: -4px;
+  overflow: hidden;
+  padding: 0.8rem 2rem;
+  position: relative;
+  margin: 3px auto;
+  text-transform: uppercase;
+  transition: 0.2s linear 0.1s;
+  
+  color: #fff; /* Text color */
+  cursor: pointer;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+      Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+}
+/* Add hover effect with neon glow */
+#selectColorButton:hover,
+#selectSponsorButton:hover,
+#selectBadgeButton:hover,#selectExtrasButton:hover,
+#selectLogoButton:hover,
+#selectStyleButton:hover,
+#selectBackButton:hover,
+#View_All:hover,#Make_Order:hover,#basket:hover {
+    background: var(--neon);
+    box-shadow: 0 0 5px var(--neon), 0 0 25px var(--neon), 
+                0 0 50px var(--neon), 0 0 100px var(--neon);
+    color: #fff;
+    outline-color: transparent;
+    transition: 0.2s linear 0.6s;
+}
+
+/* Span to hold the borders */
+#selectColorButton span,
+#selectSponsorButton span,
+#selectBadgeButton span,
+#selectLogoButton span,
+#selectStyleButton span,
+#selectBackButton span,
+#selectExtrasButton span
+#View_All span,#Make_Order span,#basket span {
+    display: block;
+    inset: 0;
+    position: absolute;
+}
+
+/* Top border animation */
+#selectColorButton .top,
+#selectSponsorButton .top,
+#selectBadgeButton .top,
+#selectLogoButton .top,
+#selectStyleButton .top,
+#selectBackButton .top,
+#selectExtrasButton .top,
+#View_All .top, #Make_Order .top, #basket .top{
+    border-top: 4px solid var(--neon);
+    opacity: 0;
+    transform: translateX(calc(-100% + var(--progress, 0%)));
+    transition: none;
+}
+
+/* Right border animation */
+#selectColorButton .right,
+#selectSponsorButton .right,
+#selectBadgeButton .right,
+#selectLogoButton .right,
+#selectStyleButton .right,
+#selectBackButton .right,
+#selectExtrasButton .right,
+#View_All .right,#Make_Order .right, #basket .right {
+    border-right: 4px solid var(--neon);
+    opacity: 0;
+    transform: translateY(calc(-100% + var(--progress, 0%)));
+    transition: none;
+}
+
+/* Bottom border animation */
+#selectColorButton .bottom,
+#selectSponsorButton .bottom,
+#selectBadgeButton .bottom,
+#selectLogoButton .bottom,
+#selectStyleButton .bottom,
+#selectBackButton .bottom,
+#selectExtrasButton .bottom,
+#View_All .bottom,#Make_Order .bottom,#basket .bottom {
+    border-bottom: 4px solid var(--neon);
+    opacity: 0;
+    transform: translateX(calc(100% - var(--progress, 0%)));
+    transition: none;
+}
+
+/* Left border animation */
+#selectColorButton .left,
+#selectSponsorButton .left,
+#selectBadgeButton .left,
+#selectLogoButton .left,
+#selectStyleButton .left,
+#selectBackButton .left,
+#selectExtrasButton .left,
+#View_All .left,#Make_Order .left,#basket .left {
+    border-left: 4px solid var(--neon);
+    opacity: 0;
+    transform: translateY(calc(100% - var(--progress, 0%)));
+    transition: none;
+}
+
+/* Animate borders on hover */
+#selectColorButton:hover .top,
+#selectSponsorButton:hover .top,
+#selectBadgeButton:hover .top,
+#selectLogoButton:hover .top,
+#selectStyleButton:hover .top,
+#selectBackButton:hover .top,
+#selectExtrasButton:hover .top,
+#View_All:hover .top, #Make_Order:hover .top,#basket:hover .top{
+    --progress: 100%;
+    opacity: 1;
+    transition: transform 0.2s linear;
+}
+
+#selectColorButton:hover .right,
+#selectSponsorButton:hover .right,
+#selectBadgeButton:hover .right,
+#selectLogoButton:hover .right,
+#selectStyleButton:hover .right,
+#selectBackButton:hover .right,
+#selectExtrasButton:hover .right,
+#View_All:hover .right,#Make_Order:hover .right,#basket:hover .top {
+    --progress: 100%;
+    opacity: 1;
+    transition: transform 0.2s linear 0.2s;
+}
+
+#selectColorButton:hover .bottom,
+#selectSponsorButton:hover .bottom,
+#selectBadgeButton:hover .bottom,
+#selectLogoButton:hover .bottom,
+#selectStyleButton:hover .bottom,
+#selectBackButton:hover .bottom,
+#selectExtrasButton:hover .bottom,
+#View_All:hover .bottom,#Make_Order:hover .bottom,#basket:hover .bottom {
+    --progress: 100%;
+    opacity: 1;
+    transition: transform 0.2s linear 0.4s;
+}
+
+#selectColorButton:hover .left,
+#selectSponsorButton:hover .left,
+#selectBadgeButton:hover .left,
+#selectLogoButton:hover .left,
+#selectStyleButton:hover .left,
+#selectBackButton:hover .left,
+#selectExtrasButton:hover .left,
+#View_All:hover .left,#Make_Order:hover .left,#basket:hover .left {
+    --progress: 100%;
+    opacity: 1;
+    transition: transform 0.2s linear 0.6s;
+}
+
+
+
+
+.closeButton {
+  cursor: pointer;
+  font-size: 20px;
+  color: #333;
+}
+
+.selectorText p {
+  z-index: 3001;
+  position: absolute;
+  padding-top: 0.3vw;
+  padding-left: 4.5vw;
+  color: black;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  font-size: 15px;
+  
+  font-weight: 200;
+  -webkit-transition: color 0.5s linear;
+  transition: color 0.5s linear;
+}
+
+.selectorText:hover {
+  cursor: pointer;
+  padding-left: 1vw;
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+.selectorText svg {
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+.selectorText:hover svg {
+  transform: scale(1.2);
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+.selectorText a {
+  padding-top: 0.3vw;
+  padding-left: 0.5vw;
+  position: absolute;
+  display: inline-block;
+}
+
+.selectorChevronSvg {
+  width: 1.5vw;
+}
+
+
+#basket {
+  position: fixed; /* Keeps the basket in the top right corner */
+  top: 20px; /* Distance from the top of the viewport */
+  right: 20px; /* Distance from the right of the viewport */
+  z-index: 1000; /* Ensures it is above other content */
+  
+  border-radius: 5px; /* Optional: rounded corners */
+  padding: 10px; /* Optional: padding for better spacing */
+  
+  width: 50px; /* Width of the basket container */
+  height: 50px; /* Height of the basket container */
+}
+
+#basket svg {
+  width: 100%; /* Make the SVG fill the container */
+  height: 100%; /* Maintain aspect ratio */
+}
+
+.selectHeader {
+  z-index: 3001;
+  height: auto; /* Change to auto for flexible height */
+  position: relative;
+  padding: 15px 10px; /* Padding for top/bottom and left/right */
+  color: #333; /* Dark gray text color for better readability */
+  font-size: 22px; /* Increase font size for prominence */
+  font-weight: 600; /* Bold text for better visibility */
+  text-align: center; /* Center the text */
+  background-color: #e0f7fa; /* Light cyan background for distinction */
+  border-bottom: 2px solid #4682B4; /* Steel Blue bottom border */
+  width:90%;
+  
+  margin: 10px 0; /* Margin for spacing above/below headers */
+  border-radius: 5px; /* Rounded corners for softer appearance */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.line-text {
+  position: relative;
+  display: inline-block;
+  font-size: 1.3rem; /* Replace with the value of $extra-large */
+  font-weight: 800;
+  text-transform: uppercase;
+  font-style: italic;
+  color: transparent;
+  -webkit-text-stroke-width: 0.1rem; /* Replace with $extra-large * 0.05 */
+  -webkit-text-stroke-color: rgb(9, 9, 9);
+  white-space: normal; /* Allow text to wrap to a new line */
+  word-break: break-word;
+
+}
+
+
+.reset {
+  /* Where is say Kit Builder at the top left */
+  z-index: 2000;
+  position: fixed;
+  top: 87%;
+  left: 56%;
+  /* margin-right: 50px; */
+  /* padding-top: 35px;
+  padding-left: 45px; */
+  color: #bcbcbc;
+  font-size: 30px;
+  font-weight: 200;
+  -webkit-transition: color 0.5s linear;
+  transition: color 0.5s linear;
+}
+
+.reset:hover {
+  color: blue;
+  cursor: pointer;
+}
+
+.texture {
+  visibility: hidden;
+  overflow: hidden;
+}
+
+/* Common styles for all image upload elements */
+#imageUpload1,
+#imageUpload2,
+#imageUpload3,#imageUpload4,#imageUpload5 {
+  display: block; /* Make it block-level for full-width */
+  width: 80%; /* Full width of the parent container */
+  padding: 12px 15px; /* Add padding for better spacing */
+  font-size: 16px; /* Adjust font size for readability */
+  cursor: pointer; /* Change cursor on hover */
+  border: 2px solid #4682B4; /* Steel Blue border */
+  border-radius: 8px; /* Rounded corners for a softer look */
+  background-color: #e0f7fa; /* Light cyan background */
+  color: #333; /* Dark gray text color */
+  transition: border-color 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+  outline: none; /* Remove default outline */
+  
+  margin: 10px auto; /* Center the box horizontally and add vertical margin */
+}
+
+/* Change the border color on hover */
+#imageUpload1:hover,
+#imageUpload2:hover,
+#imageUpload3:hover,#imageUpload4:hover,#imageUpload5:hover {
+  border-color: #5F9EA0; /* Change to Cadet Blue on hover */
+}
+
+/* Style for when a file is selected */
+#imageUpload1:focus,
+#imageUpload2:focus,
+#imageUpload3:focus,#imageUpload4:focus,#imageUpload5:focus {
+  background-color: #b2ebf2; /* Lighter background when focused */
+  border-color: #00796b; /* Darker border on focus */
+}
+
+/* Hide the default file input and create a custom button */
+#imageUpload1::file-selector-button,
+#imageUpload2::file-selector-button,
+#imageUpload3::file-selector-button,#imageUpload4::file-selector-button,#imageUpload5::file-selector-button {
+  background-color: #4682B4; /* Button background color */
+  color: white; /* Button text color */
+  padding: 10px 15px; /* Button padding */
+  border-radius: 8px; /* Rounded corners for the button */
+  border: none; /* Remove border */
+  cursor: pointer; /* Pointer cursor */
+  
+  font-size: 16px; /* Button font size */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+#imageUpload1::file-selector-button:hover,
+#imageUpload2::file-selector-button:hover,
+#imageUpload3::file-selector-button:hover
+#imageUpload4::file-selector-button:hover,#imageUpload5::file-selector-button:hover {
+  background-color: #5F9EA0; /* Change button color on hover */
+}
+
+#imageUpload {
+  display: block; /* Make it block-level for full-width */
+  width: 80%; /* Full width of the parent container */
+  padding: 12px 15px; /* Add padding for better spacing */
+  font-size: 16px; /* Adjust font size for readability */
+  cursor: pointer; /* Change cursor on hover */
+  border: 2px solid #4682B4; /* Steel Blue border */
+  border-radius: 8px; /* Rounded corners for a softer look */
+  background-color: #e0f7fa; /* Light cyan background */
+  color: #333; /* Dark gray text color */
+  transition: border-color 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+  outline: none; /* Remove default outline */
+  margin: 10px auto; /* Center the box horizontally and add vertical margin */
+}
+
+/* Change the border color on hover */
+#imageUpload:hover {
+  border-color: #5F9EA0; /* Change to Cadet Blue on hover */
+}
+
+/* Style for when a file is selected */
+#imageUpload:focus {
+  background-color: #b2ebf2; /* Lighter background when focused */
+  border-color: #00796b; /* Darker border on focus */
+}
+
+/* Hide the default file input and create a custom button */
+#imageUpload::file-selector-button {
+  background-color: #4682B4; /* Button background color */
+  color: white; /* Button text color */
+  padding: 10px 15px; /* Button padding */
+  border-radius: 8px; /* Rounded corners for the button */
+  border: none; /* Remove border */
+  cursor: pointer; /* Pointer cursor */
+  
+  font-size: 16px; /* Button font size */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  margin: 10px auto; /* Center the box horizontally and add vertical margin */
+}
+
+#imageUpload::file-selector-button:hover {
+  background-color: #5F9EA0; /* Change button color on hover */
+}
+
+/* Style the table container to fit within the circlebox */
+.tableContainer {
+  width: 100%;
+  overflow-x: auto; /* Allow horizontal scroll if content overflows */
+  margin-top: 15px;
+}
+
+/* Style the table itself */
+#orderTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+
+
+/* Styling for table headers */
+#orderTable th {
+  text-align: center;
+  font-size: 14px; /* Smaller font size */
+  padding: 8px;
+}
+
+/* Column width adjustments */
+.smallColumn {
+  width: 6%; /* Smaller width for Player Number and Quantity */
+}
+.smallestColumn {
+  width: 2%; /* Smaller width for Player Number and Quantity */
+}
+.smallColumn1 {
+  width: 22%; /* Smaller width for Player Number and Quantity */
+}
+
+.largeColumn {
+  width: 35%; /* Larger width for Player Name and Size */
+}
+
+/* Style for table headers */
+#orderTable th {
+  background-color: #00796b;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px 10px 0 0; /* Rounded corners at the top */
+}
+
+/* Style for table rows */
+#orderTable tr {
+  background-color: #e0f7fa;
+  transition: background-color 0.3s ease;
+}
+
+#orderTable tr:hover {
+  background-color: #b2ebf2;
+}
+
+/* Style for table cells */
+#orderTable td {
+  padding: 10px;
+  border: 1px solid #00796b;
+}
+
+/* Style for the input fields within the table */
+#orderTable input[type="text"],
+#orderTable input[type="number"],
+#orderTable select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #00796b;
+  border-radius: 4px;
+  background-color: #ffffff;
+}
+
+/* Style for the 'Add New' button */
+.addRowButton {
+  background-color: #00796b;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 5px;
+}
+
+.addRowButton:hover {
+  background-color: #004d40;
+}
+
+/* Style for the 'Save Orders' button */
+#saveOrdersButton {
+  background-color: #00796b;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto;
+  display: block;
+}
+
+#saveOrdersButton:hover {
+  background-color: #004d40;
+}
+/* Separate style for the 'Add New' button, positioned below the table */
+.addRowButtonContainer {
+  text-align: center; /* Center the button */
+  margin-top: 20px;   /* Add space between the table and the button */
+}
+
+.addRowButton {
+  background-color: #00796b;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.addRowButton:hover {
+  background-color: #004d40;
+}
+
+.imageContainer {
+  width: 90%;
+  padding-left:5%;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+}
+
+/* Container for the text details */
+.detailsContainer {
+  font-weight: 600; /* Bold text for better visibility */
+  font-size: 20px;
+  color: #000000;
+}
+
+/* Styling for each image */
+.imageContainer img {
+  width: 100%!important;
+  height: auto;
+  display: block;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional: Add some hover effect to the images */
+.imageContainer img:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
+}

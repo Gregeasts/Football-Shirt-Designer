@@ -1,0 +1,3674 @@
+<!DOCTYPE html>
+<html>
+<!-- //////////////////////////////// -->
+  <head>
+    <title>Kit Builder</title>
+    <!-- -->
+    <meta charset="utf-8">
+    <!-- Style -->
+    <link rel="stylesheet" href="lib/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- Include Google Fonts in your HTML -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@700&family=Roboto:wght@700&display=swap" rel="stylesheet">
+
+
+
+    <!-- Type -->
+    <!-- IBM PLex Sans -->
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100,200,400,600" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Three.js + Utilities-->
+    <!-- Github enforces https -->
+    <!-- <script src="http://threejs.org/build/three.js"></script> -->
+    <script src="lib/js/utils/three.js"></script>
+    <script src="lib/js/utils/Tween.min.js"></script>
+    <script src="lib/js/utils/OrbitControls.js"></script>
+  </head>
+<!-- //////////////////////////////// -->
+  <body>
+    
+    <div class="logo helpButton" id="helpButton">Kit Builder</div>
+    <div class ='basketButton' id='basket'>
+      <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M5.5,21C4.72,21 4.04,20.55 3.71,19.9V19.9L1.1,10.44L1,10C1,9.45 1.45,9 2,9H6.58L11.18,2.43C11.36,2.17 11.66,2 12,2C12.34,2 12.65,2.17 12.83,2.44L17.42,9H22C22.55,9 23,9.45 23,10L22.96,10.29L20.29,19.9C19.96,20.55 19.28,21 18.5,21H5.5M12,4.74L9,9H15L12,4.74M12,13C10.9,13 10,13.9 10,15C10,16.1 10.9,17 12,17C13.1,17 14,16.1 14,15C14,13.9 13.1,13 12,13Z" /></svg>
+    </div>
+    <div class="helpwindow1" id="helpWindow1">
+      
+      <div class="helpWindow" id="helpWindow">
+        <div id='resizeHandle1' class="resizeHandle1"></div>
+        <a id="helpWindowClose" class="helpChevron">
+          <svg class="chevronSvg" x="0px" y="0px" viewBox="0 0 15.4 15.4" xml:space="preserve">
+            <g>
+              <polyline vector-effect="non-scaling-stroke" stroke-width="2" fill="none" stroke-miter="" limit="10" points="0.4,15 7.7,7.7 0.4,0.4"></polyline>
+              <!-- <polyline vector-effect="non-scaling-stroke" stroke-width="2" fill="none" stroke-miter="" limit="10" points="15,15 7.7,7.7 15,0.4 	"></polyline> -->
+            </g>
+          </svg>
+        </a>
+        <p class="windowHeader"><i>Help Window</i></p>
+        <p class="windowText"><i>This easy to use kit builder is perfect for designing your own kit!</i></p>
+        <p class="windowText">-----------------------------</p>
+        <p class="windowText"><i>01.</i> Simply use the cursor to rotate the 3D jersey model.</p>
+        <p class="windowText"><i>02.</i> Use the options list on the left of your screen to edit the model. Add styles, colours, logos, badges and sponsors!</p>
+        <p class="windowText"><i>03.</i> Use the palette to edit the fill colour of the area you selected.</p>
+        <p class="windowText">-----------------------------</p>
+        <p class="windowText"><i>In no time you will have created a beautiful, unique kit!</i></p>
+        <p class="windowText">By Greg Eastman</p>
+  
+      </div>
+
+
+    </div>
+    <div class="'basketWindow1" id="basketWindow1">
+      
+      <div class="basketWindow" id="basketWindow">
+        <div id='resizeHandle3' class="resizeHandle3"></div>
+        <a id="basketWindowClose" class="helpChevron">
+
+            <svg class="chevronSvg" x="0px" y="0px" viewBox="0 0 15.4 15.4" xml:space="preserve">
+                <g>
+                    <polyline vector-effect="non-scaling-stroke" stroke-width="2" fill="none" stroke-miter="" limit="10" points="0.4,15 7.7,7.7 0.4,0.4"></polyline>
+                </g>
+            </svg>
+        </a>
+        <p class="windowHeader"><i>Your Basket</i></p>
+        <div id="basketItems"></div> <!-- This will hold individual basket entries -->
+        <p id="basketTotal" class="basketTotal smallheader centralise">Total Cost: £0.00</p> <!-- Total cost display -->
+      </div>
+
+    </div>
+    
+    <div class ='sizeWindow1' id="'sizeWindow1">
+      
+      <div class="sizeWindow" id="sizeWindow">
+        <div id='resizeHandle2' class="resizeHandle2"></div>
+        <a id="sizeWindowClose" class="helpChevron">
+          <svg class="chevronSvg" x="0px" y="0px" viewBox="0 0 15.4 15.4" xml:space="preserve">
+            <g>
+              <polyline vector-effect="non-scaling-stroke" stroke-width="2" fill="none" stroke-miter="" limit="10" points="0.4,15 7.7,7.7 0.4,0.4"></polyline>
+              <!-- <polyline vector-effect="non-scaling-stroke" stroke-width="2" fill="none" stroke-miter="" limit="10" points="15,15 7.7,7.7 15,0.4 	"></polyline> -->
+            </g>
+          </svg>
+        </a>
+        <p class="windowHeader"><i>Size Guidelines</i></p>
+        <p class="windowText"><i>Sizes are measured in inches</i></p>
+        <p class="windowText">-----------------------------</p>
+        <p class="windowText"><i>01.</i> Small: Fits chest sizes smaller than 36 inches, suitable for heights 5'5" and below.</p>
+        <p class="windowText"><i>02.</i> Medium: Fits chest sizes 36-40 inches, suitable for heights 5'5" - 5'10".</p>
+        <p class="windowText"><i>03.</i> Large: Fits chest sizes 40-44 inches, suitable for heights 5'10" - 6'1".</p>
+        <p class="windowText"><i>04.</i> XL: Fits chest sizes 44+ inches, suitable for heights 6'1" and above.</p>
+        <p class="windowText">-----------------------------</p>
+        <p class="windowText"><i>Choose the right size for the best fit!</i></p>
+        <p class="windowText">By Greg Eastman</p>
+        
+      </div>
+      
+    </div>
+    
+    <div class="reset" id="resetCamera">Reset Camera</div>
+    
+    
+
+
+    <div class='selectorWindow1' id='selectorWindow1'>
+      <div class="resizeHandle"></div>
+
+    
+      <div class="selectorWindow" id="selectorWindow">
+        
+        <button id="selectStyleButton">1) Select Style</button>
+        <button id="selectColorButton">2) Select Colours</button>
+        <button id="selectLogoButton">3) Adjust Logo</button>
+        <button id="selectBadgeButton">4) Add Badge</button>
+        <button id="selectSponsorButton">5) Add Sponsor & Sleeve Logo</button>
+        <button id="selectBackButton">6) Edit Back of Shirt</button>
+        <button id="selectExtrasButton">7) Add Extras</button>
+        <button id="View_All">8) View All</button>
+        <button id="Make_Order">9) Make Order</button>
+        <div class="selectorContent" id="Make_Orders">
+          <div class="circlebox">
+            <div class="selectHeader line-text">
+              Select Order
+              <span class="closeButton" id="closeButton35">&times;</span>
+            </div>
+            <p><i>Note: Leave Number/Name blank if you do not wish for these on your kit! </i></p>
+            <p class="sizeGuidelines sizeButton" id="sizeButton"">
+              To see size guidelines click here.
+            </p>
+            
+        
+            <!-- Table container -->
+            <!-- Table container -->
+            <div class="tableContainer">
+              <table id="orderTable">
+                  <thead>
+                      <tr>
+                          <th class="smallColumn">Player Number</th>
+                          <th class="largeColumn">Player Name</th>
+                          <th class="smallColumn1">Size</th>
+                          <th class="smallColumn">Quantity</th>
+                          <th class="smallestColumn"></th> <!-- New header for actions -->
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <!-- Rows will be dynamically added here -->
+                      <tr class="orderRow">
+                          <td><input type="number" class="playerNumber" placeholder=""></td>
+                          <td><input type="text" class="playerName" placeholder="Enter name"></td>
+                          <td>
+                              <select class="playerSize">
+                                  <option value="S">S</option>
+                                  <option value="M">M</option>
+                                  <option value="L">L</option>
+                                  <option value="XL">XL</option>
+                              </select>
+                          </td>
+                          <td><input type="number" class="playerQuantity" placeholder=""></td>
+                          <td><button class="deleteRow">✖</button></td> <!-- Delete button -->
+                          
+                      </tr>
+                  </tbody>
+              </table>
+            </div>
+
+
+        
+            <!-- Add New Row button below the table -->
+            <p id="totalQuantity">Total Quantity: 0</p>
+            <p id="totalPrice">Total Price: £0.00</p> 
+            <div id="infoBox" class="infoBox circlebox" style="margin-top: 10px; color: blue;"></div>
+            <div class="addRowButtonContainer">
+              <button class="addRowButton line-text" id="addRowButton">Add More to Order</button>
+            </div>
+            <div class="circlebox">
+              <p><i class="smallheader">Pricing:  </i></p>
+              <p><i>1-5 shirts: £30.00 per shirt</i></p>
+              <p><i>6-10 shirts: £27.50 per shirt</i></p>
+              <p><i>10-20 shirts: £25.00 per shirt</i></p>
+              <p><i>20-40 shirts: £22.50 per shirt</i></p>
+              <p><i>40+ shirts: £20.00 per shirt</i></p>
+
+            </div>
+
+        
+            <!-- Save Orders button -->
+            <button id="saveOrdersButton" class="addRowButton line-text">Save Orders</button>
+          </div>
+        </div>
+        
+        
+
+        <div class="selectorContent" id="selectorExtras">
+          <div class='circlebox' id="addExtrasBox">
+            <div class="selectHeader line-text line-text">
+                
+              Select Extras
+              <span class="closeButton" id="closeButton27">&times;</span>
+            </div>
+            <div class="extrasItem" id='full' data-title="stars">
+              <img src="assets\textures\stars.png" alt="One shade" />
+            </div>
+            <div class="extrasItem" data-title="line">
+              <img src="assets\textures\blackline.png" alt="Half and half" />
+            </div>
+            <div class="extrasItem" data-title="lines">
+              <img src="assets\textures\diagonallines.png" alt="Spotty" />
+            </div>
+            <div class="extrasItem" data-title="diamond">
+              <img src="assets\textures\diamondpattern.png" alt="Areas" />
+            </div>
+            <div class="extrasItem" data-title="squares">
+              <img src="assets\textures\blacksquares.png" alt="Vertical Lines" />
+            </div>
+            <div class="extrasItem" data-title="stars1">
+              <img src="assets\textures\stars1.png" alt="Vertical Lines" />
+            </div>
+            <div class="extrasItem" data-title="fancypattern">
+              <img src="assets\textures\fancycollar.png" alt="Vertical Lines" />
+            </div>
+            <div class="extrasItem" data-title="split">
+              <img src="assets\textures\blackli.png" alt="Vertical Lines" />
+            </div>
+          </div>
+          <div  class = 'circlebox' id="extrascolourList">
+            <div class="selectHeader line-text">
+              Select Sleeve Trim Colour 
+              <span class="closeButton" id="closeButton28">&times;</span>
+            </div>  
+    
+            
+            <div class="colourItem1" id='black' data-title="black">
+              <div class="colorSquare" style="background-color: black;"></div>
+              
+            </div>
+            <div class="colourItem1" data-title="white">
+              <div class="colorSquare" style="background-color: white; border: 1px solid #ccc;"></div>
+              
+            </div>
+            <div class="colourItem1" data-title="l-red">
+              <div class="colorSquare" style="background-color:#f44336; border: 1px solid#f44336;"></div>
+              
+            </div>
+            <div class="colourItem1" data-title="d-red">
+              <div class="colorSquare" style="background-color:#990000; border: 1px solid#990000;"></div>
+              
+            </div>
+            <div class="colourItem1" data-title="blue">
+              <div class="colorSquare" style="background-color:rgb(0, 0, 255); border: 1px solid rgb(0, 0, 255);"></div>
+              
+            </div>
+            <div class="colourItem1" data-title="d-blue">
+              <div class="colorSquare" style="background-color:rgb(35, 0, 162); border: 1px solid rgb(35, 0, 162);"></div>
+              
+            </div>
+            <div class="colourItem1" data-title="l-blue">
+              <div class="colorSquare" style="background-color:rgb(43, 214, 217); border: 1px solid rgb(43, 214, 217);"></div>
+              
+            </div>
+            <div class="colourItem1" data-title="purple">
+              <div class="colorSquare" style="background-color:rgb(201, 4, 240); border: 1px solid rgb(201, 4, 240);"></div>
+              
+            </div>
+            <div class="colourItem1" data-title="pink">
+              <div class="colorSquare" style="background-color:rgb(254, 0, 233); border: 1px solid rgb(254, 0, 233);"></div>
+              
+            </div>
+            <div class="colourItem1" data-title="l-green">
+              <div class="colorSquare" style="background-color:rgb(0, 254, 42); border: 1px solid rgb(0, 254, 42);"></div>
+              
+            </div>
+            <div class="colourItem1" data-title="green">
+              <div class="colorSquare" style="background-color:rgb(3, 124, 23); border: 1px solid rgb(3, 124, 23);"></div>
+              
+            </div>
+            <div class="colourItem1" data-title="yellow">
+              <div class="colorSquare" style="background-color:rgb(245, 237, 4); border: 1px solid rgb(245, 237, 4);"></div>
+              
+            </div>
+            <div class="colourItem1" data-title="orange">
+              <div class="colorSquare" style="background-color:rgb(245, 181, 4); border: 1px solid rgb(245, 181, 4);"></div>
+              
+            </div>
+            <div class="colourItem1" data-title="grey">
+              <div class="colorSquare" style="background-color:rgb(155, 155, 155); border: 1px solid rgb(155, 155, 155);"></div>
+              
+            </div>
+            <div class="colourItem1" data-title="d-orange">
+              <div class="colorSquare" style="background-color:rgb(254, 123, 0); border: 1px solid rgb(254, 123, 0);"></div>
+              
+            </div>
+            <div class="colourItem1" data-title="d-green">
+              <div class="colorSquare" style="background-color:rgb(29, 60, 26); border: 1px solid rgb(29, 60, 26);"></div>
+              
+            </div>
+            <div class="colourItem1" data-title="d-yellow">
+              <div class="colorSquare" style="background-color:rgb(246, 226, 2); border: 1px solid rgb(246, 226, 2);"></div>
+              
+            </div>
+            
+    
+          
+          </div>
+        
+          <div  class = 'circlebox' id="extrascolour1List">
+            <div class="selectHeader line-text">
+              Select Collar Trim Colour 
+              <span class="closeButton" id="closeButton29">&times;</span>
+            </div>  
+
+            
+            <div class="colourItem2" id='black' data-title="black">
+              <div class="colorSquare" style="background-color: black;"></div>
+              
+            </div>
+            <div class="colourItem2" data-title="white">
+              <div class="colorSquare" style="background-color: white; border: 1px solid #ccc;"></div>
+              
+            </div>
+            <div class="colourItem2" data-title="l-red">
+              <div class="colorSquare" style="background-color:#f44336; border: 1px solid#f44336;"></div>
+              
+            </div>
+            <div class="colourItem2" data-title="d-red">
+              <div class="colorSquare" style="background-color:#990000; border: 1px solid#990000;"></div>
+              
+            </div>
+            <div class="colourItem2" data-title="blue">
+              <div class="colorSquare" style="background-color:rgb(0, 0, 255); border: 1px solid rgb(0, 0, 255);"></div>
+              
+            </div>
+            <div class="colourItem2" data-title="d-blue">
+              <div class="colorSquare" style="background-color:rgb(35, 0, 162); border: 1px solid rgb(35, 0, 162);"></div>
+              
+            </div>
+            <div class="colourItem2" data-title="l-blue">
+              <div class="colorSquare" style="background-color:rgb(43, 214, 217); border: 1px solid rgb(43, 214, 217);"></div>
+              
+            </div>
+            <div class="colourItem2" data-title="purple">
+              <div class="colorSquare" style="background-color:rgb(201, 4, 240); border: 1px solid rgb(201, 4, 240);"></div>
+              
+            </div>
+            <div class="colourItem2" data-title="pink">
+              <div class="colorSquare" style="background-color:rgb(254, 0, 233); border: 1px solid rgb(254, 0, 233);"></div>
+              
+            </div>
+            <div class="colourItem2" data-title="l-green">
+              <div class="colorSquare" style="background-color:rgb(0, 254, 42); border: 1px solid rgb(0, 254, 42);"></div>
+              
+            </div>
+            <div class="colourItem2" data-title="green">
+              <div class="colorSquare" style="background-color:rgb(3, 124, 23); border: 1px solid rgb(3, 124, 23);"></div>
+              
+            </div>
+            <div class="colourItem2" data-title="yellow">
+              <div class="colorSquare" style="background-color:rgb(245, 237, 4); border: 1px solid rgb(245, 237, 4);"></div>
+              
+            </div>
+            <div class="colourItem2" data-title="orange">
+              <div class="colorSquare" style="background-color:rgb(245, 181, 4); border: 1px solid rgb(245, 181, 4);"></div>
+              
+            </div>
+            <div class="colourItem2" data-title="grey">
+              <div class="colorSquare" style="background-color:rgb(155, 155, 155); border: 1px solid rgb(155, 155, 155);"></div>
+              
+            </div>
+            <div class="colourItem2" data-title="d-orange">
+              <div class="colorSquare" style="background-color:rgb(254, 123, 0); border: 1px solid rgb(254, 123, 0);"></div>
+              
+            </div>
+            <div class="colourItem2" data-title="d-green">
+              <div class="colorSquare" style="background-color:rgb(29, 60, 26); border: 1px solid rgb(29, 60, 26);"></div>
+              
+            </div>
+            <div class="colourItem2" data-title="d-yellow">
+              <div class="colorSquare" style="background-color:rgb(246, 226, 2); border: 1px solid rgb(246, 226, 2);"></div>
+              
+            </div>
+            
+
+          
+          </div>
+
+
+        </div>
+        <div class="selectorContent" id="selectorBack">
+
+        
+          <div class='circlebox' id="playerInfoBox">
+            <div class="selectHeader line-text line-text">
+              
+                Enter Player Information
+                <span class="closeButton" id="closeButton20">&times;</span>
+
+              
+              
+            </div>
+            <div class="inputField">
+
+                <div class="line-text"  for="playerNumber">Player Number:</div>
+                <input type="text" id="playerNumber" placeholder="Enter number" />
+            </div>
+            <div class="inputField">
+                <div class = "line-text" for="playerNumber">Player Name:</div>
+                <input type="text" id="playerName" placeholder="Enter name" />
+            </div>
+
+            <div class="inputField">
+              <div class = "line-text" for="backSlogan">Club Slogan / Name:</div>
+              <input type="text" id="backSlogan" placeholder="Enter Club Slogan / Name" />
+            </div>
+          </div>
+
+          <div class='circlebox' id="backList">
+            <div class="selectHeader line-text">
+              Select Back Number Style
+              <span class="closeButton" id="closeButton14">&times;</span>
+            </div>
+            <div class="backItem" id='bebasNeueItem' data-title='Bebas Neue'>Simple</div>
+            <div class="backItem" id='oswaldItem' data-title='Oswald'>Flashy</div>
+            <div class="backItem" id='antonItem' data-title="Anton">Basic</div>
+            <div class="backItem" id='impactItem' data-title="Impact">Impact</div>
+            <div class="backItem" id='robotoCondensedItem' data-title="Roboto Condensed">Smooth</div>
+            <div class="backItem" id='montserratItem' data-title="Montserrat">Clean</div>
+            <div class="backItem" id='latoItem' data-title="Lato">Firm</div>
+            <div class="backItem" id='righteousItem' data-title="Righteous">Bold</div>
+          </div>
+        
+          
+          <div  class = 'circlebox' id="backcolourList">
+            <div class="selectHeader line-text">
+              Select Back Number Colour
+              <span class="closeButton" id="closeButton15">&times;</span>
+            </div>
+            
+            
+            <div class="backcolourItem" id='black' data-title="black">
+              <div class="colorSquare" style="background-color: black;"></div>
+              
+            </div>
+            <div class="backcolourItem" data-title="white">
+              <div class="colorSquare" style="background-color: white; border: 1px solid #ccc;"></div>
+              
+            </div>
+            <div class="backcolourItem" id='gold' data-title="gold">
+              <div class="colorSquare" style="background-color: rgb(240, 176, 15);"></div>
+              
+            </div>
+            <div class="backcolourItem" data-title="red">
+              <div class="colorSquare" style="background-color: rgb(250, 4, 4); border: 1px solid #ccc;"></div>
+              
+            </div>
+          
+          </div>
+          
+          <div class='circlebox' id="backadjustList">
+            <div class="selectHeader line-text">
+              Adjust Number Position
+              <span class="closeButton" id="closeButton16">&times;</span>
+            </div>  
+            <div class="backadjustItem" id='up' data-title="up">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i> <!-- Move Logo Up -->
+            </div>
+            <div class="backadjustItem" id='down' data-title="down">
+                <i class="fas fa-arrow-down" aria-hidden="true"></i> <!-- Move Logo Down -->
+            </div>
+            <div class="backadjustItem" id='left' data-title="left">
+                <i class="fas fa-arrow-left" aria-hidden="true"></i> <!-- Move Logo Left -->
+            </div>
+            <div class="backadjustItem" id='right' data-title="right">
+                <i class="fas fa-arrow-right" aria-hidden="true"></i> <!-- Move Logo Right -->
+            </div>
+
+            <div class="backadjustItem" id='stretch' data-title="stretch">
+                <i class="fas fa-compress-arrows-alt" aria-hidden="true"></i> <!-- Shrink Horizontally -->
+            </div>
+            <div class="backadjustItem" id='shrink' data-title="shrink">
+                <i class="fas fa-compress" aria-hidden="true"></i> <!-- Shrink Vertically -->
+            </div>
+            <div class="backadjustItem" id='reset' data-title="reset">
+              <i class="fas fa-sync" aria-hidden="true"></i> 
+            </div>
+          </div>
+        
+
+          <div  class = 'circlebox' id="backList1">
+            <div class="selectHeader line-text">
+              Select Back Text Style
+              <span class="closeButton" id="closeButton18">&times;</span>
+            </div>
+            
+            <div class="backItem1" id='BebasNeue' data-title='Bebas Neue'>Simple</div>
+            <div class="backItem1" id='Oswald' data-title='Oswald'>Flashy</div>
+            <div class="backItem1" id='Anton' data-title="Anton">Basic</div>
+            <div class="backItem1" id='Impact' data-title="Impact">Impact</div>
+            <div class="backItem1" id='RobotoCondensed' data-title="Roboto Condensed">Smooth</div>
+            <div class="backItem1" id='Montserrat' data-title="Montserrat">Clean</div>
+            <div class="backItem1" id='Lato' data-title="Lato">Firm</div>
+            <div class="backItem1" id='Righteous' data-title="Righteous">Bold</div>
+            
+          
+          </div>
+
+          <div  class = 'circlebox' id="backcolourList1">
+            <div class="selectHeader line-text">
+              Select Back Text Colour
+              <span class="closeButton" id="closeButton17">&times;</span>
+            </div>
+            
+            
+            <div class="backcolourItem1" id='black' data-title="black">
+              <div class="colorSquare" style="background-color: black;"></div>
+              
+            </div>
+            <div class="backcolourItem1" data-title="white">
+              <div class="colorSquare" style="background-color: white; border: 1px solid #ccc;"></div>
+              
+            </div>
+            <div class="backcolourItem1" id='gold' data-title="gold">
+              <div class="colorSquare" style="background-color: rgb(240, 176, 15);"></div>
+              
+            </div>
+            <div class="backcolourItem1" data-title="red">
+              <div class="colorSquare" style="background-color: rgb(250, 4, 4); border: 1px solid #ccc;"></div>
+              
+            </div>
+          
+          </div>
+
+          <div class='circlebox' id="backadjustList1">
+            <div class="selectHeader line-text">
+              Adjust Text Position
+              <span class="closeButton19" id="closeButton19">&times;</span>
+            </div>  
+            <div class="backadjustItem1" id='up' data-title="up">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i> <!-- Move Logo Up -->
+            </div>
+            <div class="backadjustItem1" id='down' data-title="down">
+                <i class="fas fa-arrow-down" aria-hidden="true"></i> <!-- Move Logo Down -->
+            </div>
+            <div class="backadjustItem1" id='left' data-title="left">
+                <i class="fas fa-arrow-left" aria-hidden="true"></i> <!-- Move Logo Left -->
+            </div>
+            <div class="backadjustItem1" id='right' data-title="right">
+                <i class="fas fa-arrow-right" aria-hidden="true"></i> <!-- Move Logo Right -->
+            </div>
+
+            <div class="backadjustItem1" id='stretch' data-title="stretch">
+                <i class="fas fa-compress-arrows-alt" aria-hidden="true"></i> <!-- Shrink Horizontally -->
+            </div>
+            <div class="backadjustItem1" id='shrink' data-title="shrink">
+                <i class="fas fa-compress" aria-hidden="true"></i> <!-- Shrink Vertically -->
+            </div>
+            <div class="backadjustItem1" id='reset' data-title="reset">
+              <i class="fas fa-sync" aria-hidden="true"></i> 
+            </div>
+            <div class="backadjustItem1" id='reset' data-title="spaceout">
+              <i class="fa-solid fa-text-width"></i>
+            </div>
+            <div class="backadjustItem1" id='reset' data-title="spacein">
+              <i class="fa-solid fa-right-left"></i>
+            </div>
+          </div>
+          <div  class = 'circlebox' id="backList2">
+            <div class="selectHeader line-text">
+              Select Slogan / Team Style
+              <span class="closeButton" id="closeButton29">&times;</span>
+            </div>
+            
+            <div class="backItem2" id='BebasNeue' data-title='Bebas Neue'>Simple</div>
+            <div class="backItem2" id='Oswald' data-title='Oswald'>Flashy</div>
+            <div class="backItem2" id='Anton' data-title="Anton">Basic</div>
+            <div class="backItem2" id='Impact' data-title="Impact">Impact</div>
+            <div class="backItem2" id='RobotoCondensed' data-title="Roboto Condensed">Smooth</div>
+            <div class="backItem2" id='Montserrat' data-title="Montserrat">Clean</div>
+            <div class="backItem2" id='Lato' data-title="Lato">Firm</div>
+            <div class="backItem2" id='Righteous' data-title="Righteous">Bold</div>
+            
+          
+          </div>
+
+          <div  class = 'circlebox' id="backcolourList2">
+            <div class="selectHeader line-text">
+              Select Slogan / Team Text Colour
+              <span class="closeButton" id="closeButton30">&times;</span>
+            </div>
+            
+            
+            <div class="backcolourItem2" id='black' data-title="black">
+              <div class="colorSquare" style="background-color: black;"></div>
+              
+            </div>
+            <div class="backcolourItem2" data-title="white">
+              <div class="colorSquare" style="background-color: white; border: 1px solid #ccc;"></div>
+              
+            </div>
+            <div class="backcolourItem2" id='gold' data-title="gold">
+              <div class="colorSquare" style="background-color: rgb(240, 176, 15);"></div>
+              
+            </div>
+            <div class="backcolourItem2" data-title="red">
+              <div class="colorSquare" style="background-color: rgb(250, 4, 4); border: 1px solid #ccc;"></div>
+              
+            </div>
+          
+          </div>
+
+          <div class='circlebox' id="backadjustList2">
+            <div class="selectHeader line-text">
+              Adjust Slogan / Team Position
+              <span class="closeButton31" id="closeButton31">&times;</span>
+            </div>  
+            <div class="backadjustItem2" id='up' data-title="up">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i> <!-- Move Logo Up -->
+            </div>
+            <div class="backadjustItem2" id='down' data-title="down">
+                <i class="fas fa-arrow-down" aria-hidden="true"></i> <!-- Move Logo Down -->
+            </div>
+            <div class="backadjustItem2" id='left' data-title="left">
+                <i class="fas fa-arrow-left" aria-hidden="true"></i> <!-- Move Logo Left -->
+            </div>
+            <div class="backadjustItem2" id='right' data-title="right">
+                <i class="fas fa-arrow-right" aria-hidden="true"></i> <!-- Move Logo Right -->
+            </div>
+
+            <div class="backadjustItem2" id='stretch' data-title="stretch">
+                <i class="fas fa-compress-arrows-alt" aria-hidden="true"></i> <!-- Shrink Horizontally -->
+            </div>
+            <div class="backadjustItem2" id='shrink' data-title="shrink">
+                <i class="fas fa-compress" aria-hidden="true"></i> <!-- Shrink Vertically -->
+            </div>
+            <div class="backadjustItem2" id='reset' data-title="reset">
+              <i class="fas fa-sync" aria-hidden="true"></i> 
+            </div>
+            <div class="backadjustItem2" id='reset' data-title="spaceout">
+              <i class="fa-solid fa-text-width"></i>
+            </div>
+            <div class="backadjustItem2" id='reset' data-title="spacein">
+              <i class="fa-solid fa-right-left"></i>
+            </div>
+          </div>
+          <div class="circlebox">
+            <div class="selectHeader line-text">
+              Upload Your Back Collar Sponsor
+              <span class="closeButton" id="closeButton32">&times;</span>
+            </div>
+            <div id="uploadImage5">
+                <input type="file" id="imageUpload5" accept="image/*">
+                <div id="imagePreview5"></div> <!-- Placeholder for image preview -->
+            </div>
+
+          </div>
+          
+          
+          <div  class = 'circlebox' id="backsponsorList">
+            <div class="selectHeader line-text">
+              Show Back Sponsor on Jersey?
+              <span class="closeButton" id="closeButton33">&times;</span>
+            </div>
+            <div class="backsponsorItemimg" data-title="usefile">
+              <i class="fas fa-check"></i>
+            </div>
+            <div class="backsponsorItemimg" id="nosponsor" data-title="nosponsor">
+              <i class="fas fa-times"></i>
+            </div>
+
+          </div>
+
+          
+          <div  class = 'circlebox' id="sponsorsizeList">
+            <div class="selectHeader line-text">
+              Select Back Sponsor size  
+              <span class="closeButton" id="closeButton34">&times;</span>
+            </div>  
+
+            
+            <div class="bs_sizeItem" id='small' data-title="small">
+              <i class="fas fa-circle" style="font-size: 20px;"></i> <!-- Small Icon -->
+            </div>
+            <div class="bs_sizeItem" data-title="medium">
+              <i class="fas fa-circle" style="font-size: 30px;"></i> <!-- Medium Icon -->
+            </div>
+            <div class="bs_sizeItem" data-title="large">
+              <i class="fas fa-circle" style="font-size: 40px;"></i> <!-- Large Icon -->
+            </div>
+    
+          
+          </div>
+          
+          
+
+
+      </div>
+        <div class="selectorContent" id="selectorStyle">
+            
+            <div  id="styleList">
+              <div class="selectHeader line-text">
+                Select jersey style
+                <span class="closeButton" id="closeButton1">&times;</span>
+              </div>
+              
+              <div class="styleItem" id='full' data-title="full">
+                <img src="assets\textures\Screenshot 2024-08-23 192906.png" alt="One shade" />
+            </div>
+            <div class="styleItem" data-title="half">
+                <img src="assets\textures\half.png" alt="Half and half" />
+            </div>
+            <div class="styleItem" data-title="dots">
+                <img src="assets\textures\half.png" alt="Spotty" />
+            </div>
+            <div class="styleItem" data-title="areas">
+                <img src="assets\textures\areas.png" alt="Areas" />
+            </div>
+            <div class="styleItem" data-title="vertical-stripes">
+                <img src="assets\textures\zigzag.png" alt="Vertical Lines" />
+            </div>
+            <div class="styleItem" data-title="horizontal-stripes">
+                <img src="assets\textures\horizontal.png" alt="Horizontal Lines" />
+            </div>
+            <div class="styleItem" data-title="zigzag">
+                <img src="assets\textures\vertical.png" alt="Zigzags" />
+            </div>
+            <div class="styleItem" data-title="diagonal-stripes">
+                <img src="assets\textures\zigzag.png" alt="Diagonal Stripes" />
+            </div>
+            
+            
+          </div>
+        </div>
+        
+
+        
+        <div class="selectorContent" id="selectorContent">
+          <div class ='circlebox'>
+
+          
+            <div class="selectHeader line-text">
+              Select jersey colours
+              <span class="closeButton" id="closeButton">&times;</span>
+            </div>
+    
+
+              <div class="selectorText" id="primary">
+
+                  <a class="">
+                      <svg class="selectorChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                          <polyline id="primarySelectorSvg" vector-effect="non-scaling-stroke" fill="#F37021" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+                      </svg>
+                  </a>
+                  <p>Primary</p>
+              </div>
+              <div class="selectorText" id="secondary">
+                  <a class="">
+                      <svg class="selectorChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                          <polyline id="secondarySelectorSvg" vector-effect="non-scaling-stroke" fill="#008C49" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+                      </svg>
+                  </a>
+                  <p>Secondary</p>
+              </div>
+              <div class="selectorText" id="tertiary">
+                  <a class="">
+                      <svg class="selectorChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                          <polyline id="tertiarySelectorSvg" vector-effect="non-scaling-stroke" fill="#C9191F" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+                      </svg>
+                  </a>
+                  <p>Tertiary</p>
+              </div>
+              <div class="selectorText" id="accent">
+                  <a class="">
+                      <svg class="selectorChevronSvg accentSelectorSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                          <polyline id="accentSelectorSvg" vector-effect="non-scaling-stroke" fill="#C7A0CB" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+                      </svg>
+                  </a>
+                  <p>Accent</p>
+              </div>
+              <div style="height: 10px"></div>
+            </div>
+        
+      </div>
+        <div class="selectorContent" id="selectorLogo">
+          
+          <div  class = 'circlebox' id="logoList">
+            <div class="selectHeader line-text">
+              Select Logo position
+              <span class="closeButton" id="closeButton2">&times;</span>
+            </div>
+            
+            <div class="logoItem" id='left' data-title="left">
+              <i class="bi bi-border-left"></i> <!-- Left -->
+            </div>
+            <div class="logoItem" data-title="centre">
+              <i class="bi bi-border-middle"></i> <!-- Centre -->
+            </div>
+            <div class="logoItem" id='right' data-title="right">
+              <i class="bi bi-border-right"></i> <!-- Right -->
+            </div>
+    
+          
+          </div>
+          
+          <div  class = 'circlebox' id="logosizeList">
+            <div class="selectHeader line-text">
+              Select Logo size  
+              <span class="closeButton" id="closeButton3">&times;</span>
+            </div> 
+
+            <div class="sizeItem" id='small' data-title="small">
+              <i class="fas fa-circle" style="font-size: 20px;"></i> <!-- Small Icon -->
+            </div>
+            <div class="sizeItem" data-title="medium">
+              <i class="fas fa-circle" style="font-size: 30px;"></i> <!-- Medium Icon -->
+            </div>
+            <div class="sizeItem" data-title="large">
+              <i class="fas fa-circle" style="font-size: 40px;"></i> <!-- Large Icon -->
+            </div>
+          
+    
+          
+          </div>
+          
+          <div  class = 'circlebox' id="logocolourList">
+            <div class="selectHeader line-text">
+              Select Logo Colour 
+              <span class="closeButton" id="closeButton4">&times;</span>
+            </div>  
+    
+            
+            <div class="colourItem" id='black' data-title="black">
+              <div class="colorSquare" style="background-color: black;"></div>
+              
+            </div>
+            <div class="colourItem" data-title="white">
+              <div class="colorSquare" style="background-color: white; border: 1px solid #ccc;"></div>
+              
+            </div>
+            <div class="colourItem" data-title="l-red">
+              <div class="colorSquare" style="background-color:#f44336; border: 1px solid#f44336;"></div>
+              
+            </div>
+            <div class="colourItem" data-title="d-red">
+              <div class="colorSquare" style="background-color:#990000; border: 1px solid#990000;"></div>
+              
+            </div>
+            <div class="colourItem" data-title="blue">
+              <div class="colorSquare" style="background-color:rgb(0, 0, 255); border: 1px solid rgb(0, 0, 255);"></div>
+              
+            </div>
+            <div class="colourItem" data-title="d-blue">
+              <div class="colorSquare" style="background-color:rgb(35, 0, 162); border: 1px solid rgb(35, 0, 162);"></div>
+              
+            </div>
+            <div class="colourItem" data-title="l-blue">
+              <div class="colorSquare" style="background-color:rgb(43, 214, 217); border: 1px solid rgb(43, 214, 217);"></div>
+              
+            </div>
+            <div class="colourItem" data-title="purple">
+              <div class="colorSquare" style="background-color:rgb(201, 4, 240); border: 1px solid rgb(201, 4, 240);"></div>
+              
+            </div>
+            <div class="colourItem" data-title="pink">
+              <div class="colorSquare" style="background-color:rgb(254, 0, 233); border: 1px solid rgb(254, 0, 233);"></div>
+              
+            </div>
+            <div class="colourItem" data-title="l-green">
+              <div class="colorSquare" style="background-color:rgb(0, 254, 42); border: 1px solid rgb(0, 254, 42);"></div>
+              
+            </div>
+            <div class="colourItem" data-title="green">
+              <div class="colorSquare" style="background-color:rgb(3, 124, 23); border: 1px solid rgb(3, 124, 23);"></div>
+              
+            </div>
+            <div class="colourItem" data-title="yellow">
+              <div class="colorSquare" style="background-color:rgb(245, 237, 4); border: 1px solid rgb(245, 237, 4);"></div>
+              
+            </div>
+            <div class="colourItem" data-title="orange">
+              <div class="colorSquare" style="background-color:rgb(245, 181, 4); border: 1px solid rgb(245, 181, 4);"></div>
+              
+            </div>
+            <div class="colourItem" data-title="grey">
+              <div class="colorSquare" style="background-color:rgb(155, 155, 155); border: 1px solid rgb(155, 155, 155);"></div>
+              
+            </div>
+            <div class="colourItem" data-title="d-orange">
+              <div class="colorSquare" style="background-color:rgb(254, 123, 0); border: 1px solid rgb(254, 123, 0);"></div>
+              
+            </div>
+            <div class="colourItem" data-title="d-green">
+              <div class="colorSquare" style="background-color:rgb(29, 60, 26); border: 1px solid rgb(29, 60, 26);"></div>
+              
+            </div>
+            <div class="colourItem" data-title="d-yellow">
+              <div class="colorSquare" style="background-color:rgb(246, 226, 2); border: 1px solid rgb(246, 226, 2);"></div>
+              
+            </div>
+            
+    
+          
+          </div>
+          
+          <div class='circlebox' id="logoadjustList">
+            <div class="selectHeader line-text">
+              Adjust Logo Position
+              <span class="closeButton" id="closeButton5">&times;</span>
+            </div>  
+
+            <div class="adjustItem" id='up' data-title="up">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i> <!-- Move Logo Up -->
+            </div>
+            <div class="adjustItem" id='down' data-title="down">
+                <i class="fas fa-arrow-down" aria-hidden="true"></i> <!-- Move Logo Down -->
+            </div>
+            <div class="adjustItem" id='left' data-title="left">
+                <i class="fas fa-arrow-left" aria-hidden="true"></i> <!-- Move Logo Left -->
+            </div>
+            <div class="adjustItem" id='right' data-title="right">
+                <i class="fas fa-arrow-right" aria-hidden="true"></i> <!-- Move Logo Right -->
+            </div>
+            <div class="adjustItem" id='stretchright' data-title="stretchright">
+                <i class="fas fa-arrows-alt-h" aria-hidden="true"></i> <!-- Stretch Horizontally -->
+            </div>
+            <div class="adjustItem" id='stretchup' data-title="stretchup">
+                <i class="fas fa-arrows-alt-v" aria-hidden="true"></i> <!-- Stretch Vertically -->
+            </div>
+            <div class="adjustItem" id='shrinkright' data-title="shrinkright">
+                <i class="fas fa-compress-arrows-alt" aria-hidden="true"></i> <!-- Shrink Horizontally -->
+            </div>
+            <div class="adjustItem" id='shrinkup' data-title="shrinkup">
+                <i class="fas fa-compress" aria-hidden="true"></i> <!-- Shrink Vertically -->
+            </div>
+            <div class="adjustItem" id='reset' data-title="reset">
+              <i class="fas fa-sync" aria-hidden="true"></i> 
+            </div>  
+          </div>
+          <div id="uploadImage4">
+            <div class="circlebox">
+              <div class="selectHeader line-text">
+                Upload A Ghost Image
+                <span class="closeButton" id="closeButton25">&times;</span>
+              </div>
+              <input class='circlebox' type="file" id="imageUpload4" accept="image/*">
+              <div id="imagePreview4"></div> <!-- Placeholder for image preview -->
+
+            </div>
+          </div>
+          <div  class = 'circlebox' id="ghostimageList">
+            <div class="selectHeader line-text">
+            Show Ghost Image on Jersey?
+            <span class="closeButton" id="closeButton26">&times;</span>
+            </div>
+            <div class="ghostimageItem" data-title="usefile">
+              <i class="fas fa-check"></i> 
+            </div>
+            <div class="ghostimageItem" id="nobadge" data-title="nobadge">
+              <i class="fas fa-times"></i>
+            </div>
+
+          </div>
+            
+        </div>
+
+    
+
+        
+        <div class="selectorContent" id="selectorBadge">
+
+          <div id="uploadImage">
+              <div class="circlebox">
+                <div class="selectHeader line-text">
+                  Upload Your Badge
+                  <span class="closeButton" id="closeButton9">&times;</span>
+                </div>
+                <input class='circlebox' type="file" id="imageUpload" accept="image/*">
+                <div id="imagePreview"></div> <!-- Placeholder for image preview -->
+
+              </div>
+              
+          </div>
+          
+          <div  class = 'circlebox' id="nobadgeList">
+            <div class="selectHeader line-text">
+            Show Badge on Jersey?
+            <span class="closeButton" id="closeButton9">&times;</span>
+          </div>
+            <div class="nobadgeItem" data-title="usefile">
+              <i class="fas fa-check"></i> 
+            </div>
+            <div class="nobadgeItem" id="nobadge" data-title="nobadge">
+              <i class="fas fa-times"></i>
+            </div>
+
+          </div>
+          
+          <div  class = 'circlebox' id="badgeList">
+            <div class="selectHeader line-text">
+              Adjust Badge Position
+              <span class="closeButton" id="closeButton6">&times;</span>
+            </div>
+            
+            <div class="badgeItem" id='left' data-title="left">
+              <i class="bi bi-border-left"></i> <!-- Left -->
+            </div>
+            <div class="badgeItem" data-title="centre">
+              <i class="bi bi-border-middle"></i> <!-- Centre -->
+            </div>
+            <div class="badgeItem" id='right' data-title="right">
+              <i class="bi bi-border-right"></i> <!-- Right -->
+            </div>
+    
+          
+          </div>
+        
+          <div  class = 'circlebox' id="badgesizeList">
+            <div class="selectHeader line-text">
+              Select Badge size  
+              <span class="closeButton" id="closeButton7">&times;</span>
+            </div>  
+
+            
+            <div class="b_sizeItem" id='small' data-title="small">
+              <i class="fas fa-circle" style="font-size: 20px;"></i> <!-- Small Icon -->
+            </div>
+            <div class="b_sizeItem" data-title="medium">
+              <i class="fas fa-circle" style="font-size: 30px;"></i> <!-- Medium Icon -->
+            </div>
+            <div class="b_sizeItem" data-title="large">
+              <i class="fas fa-circle" style="font-size: 40px;"></i> <!-- Large Icon -->
+            </div>
+    
+          
+          </div>
+          
+          
+          <div class='circlebox' id="badgeadjustList">
+            <div class="selectHeader line-text">
+              Adjust Badge Position
+              <span class="closeButton" id="closeButton8">&times;</span>
+            </div>  
+            <div class="b_adjustItem" id='up' data-title="up">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i> <!-- Move Logo Up -->
+            </div>
+            <div class="b_adjustItem" id='down' data-title="down">
+                <i class="fas fa-arrow-down" aria-hidden="true"></i> <!-- Move Logo Down -->
+            </div>
+            <div class="b_adjustItem" id='left' data-title="left">
+                <i class="fas fa-arrow-left" aria-hidden="true"></i> <!-- Move Logo Left -->
+            </div>
+            <div class="b_adjustItem" id='right' data-title="right">
+                <i class="fas fa-arrow-right" aria-hidden="true"></i> <!-- Move Logo Right -->
+            </div>
+            <div class="b_adjustItem" id='stretchright' data-title="stretchright">
+                <i class="fas fa-arrows-alt-h" aria-hidden="true"></i> <!-- Stretch Horizontally -->
+            </div>
+            <div class="b_adjustItem" id='stretchup' data-title="stretchup">
+                <i class="fas fa-arrows-alt-v" aria-hidden="true"></i> <!-- Stretch Vertically -->
+            </div>
+            <div class="b_adjustItem" id='shrinkright' data-title="shrinkright">
+                <i class="fas fa-compress-arrows-alt" aria-hidden="true"></i> <!-- Shrink Horizontally -->
+            </div>
+            <div class="b_adjustItem" id='shrinkup' data-title="shrinkup">
+                <i class="fas fa-compress" aria-hidden="true"></i> <!-- Shrink Vertically -->
+            </div>
+            <div class="b_adjustItem" id='reset' data-title="reset">
+              <i class="fas fa-sync" aria-hidden="true"></i> 
+            </div>
+          </div>
+        
+        
+        </div>
+
+
+        <div class="selectorContent" id="selectorSponsor">
+            <div class="circlebox">
+              <div class="selectHeader line-text">
+                Upload Your Sponsor
+                <span class="closeButton" id="closeButton10">&times;</span>
+              </div>
+              <div id="uploadImage1">
+                  <input type="file" id="imageUpload1" accept="image/*">
+                  <div id="imagePreview1"></div> <!-- Placeholder for image preview -->
+              </div>
+
+            </div>
+            
+            
+            <div  class = 'circlebox' id="sponsorList">
+              <div class="selectHeader line-text">
+                Show Sponsor on Jersey?
+                <span class="closeButton" id="closeButton10">&times;</span>
+              </div>
+              <div class="sponsorItemimg" data-title="usefile">
+                <i class="fas fa-check"></i>
+              </div>
+              <div class="sponsorItemimg" id="nosponsor" data-title="nosponsor">
+                <i class="fas fa-times"></i>
+              </div>
+    
+            </div>
+            
+            <div  class = 'circlebox' id="sponsorList">
+              <div class="selectHeader line-text">
+                Adjust Sponsor Position
+                <span class="closeButton" id="closeButton11">&times;</span>
+              </div>
+              
+              <div class="sponsorItem" id='left' data-title="left">
+                <i class="bi bi-border-left"></i> <!-- Left -->
+              </div>
+              <div class="sponsorItem" data-title="centre">
+                <i class="bi bi-border-middle"></i> <!-- Centre -->
+              </div>
+              <div class="sponsorItem" id='right' data-title="right">
+                <i class="bi bi-border-right"></i> <!-- Right -->
+              </div>
+      
+            
+            </div>
+            
+            <div  class = 'circlebox' id="sponsorsizeList">
+              <div class="selectHeader line-text">
+                Select Sponsor size  
+                <span class="closeButton" id="closeButton12">&times;</span>
+              </div>  
+    
+              
+              <div class="s_sizeItem" id='small' data-title="small">
+                <i class="fas fa-circle" style="font-size: 20px;"></i> <!-- Small Icon -->
+              </div>
+              <div class="s_sizeItem" data-title="medium">
+                <i class="fas fa-circle" style="font-size: 30px;"></i> <!-- Medium Icon -->
+              </div>
+              <div class="s_sizeItem" data-title="large">
+                <i class="fas fa-circle" style="font-size: 40px;"></i> <!-- Large Icon -->
+              </div>
+      
+            
+            </div>
+            
+            
+            <div class='circlebox' id="sponsoradjustList">
+              <div class="selectHeader line-text">
+                Adjust Sponsor Position
+                <span class="closeButton" id="closeButton13">&times;</span>
+              </div>  
+              <div class="s_adjustItem" id='up' data-title="up">
+                  <i class="fas fa-arrow-up" aria-hidden="true"></i> <!-- Move Logo Up -->
+              </div>
+              <div class="s_adjustItem" id='down' data-title="down">
+                  <i class="fas fa-arrow-down" aria-hidden="true"></i> <!-- Move Logo Down -->
+              </div>
+              <div class="s_adjustItem" id='left' data-title="left">
+                  <i class="fas fa-arrow-left" aria-hidden="true"></i> <!-- Move Logo Left -->
+              </div>
+              <div class="s_adjustItem" id='right' data-title="right">
+                  <i class="fas fa-arrow-right" aria-hidden="true"></i> <!-- Move Logo Right -->
+              </div>
+              <div class="s_adjustItem" id='stretchright' data-title="stretchright">
+                  <i class="fas fa-arrows-alt-h" aria-hidden="true"></i> <!-- Stretch Horizontally -->
+              </div>
+              <div class="s_adjustItem" id='stretchup' data-title="stretchup">
+                  <i class="fas fa-arrows-alt-v" aria-hidden="true"></i> <!-- Stretch Vertically -->
+              </div>
+              <div class="s_adjustItem" id='shrinkright' data-title="shrinkright">
+                  <i class="fas fa-compress-arrows-alt" aria-hidden="true"></i> <!-- Shrink Horizontally -->
+              </div>
+              <div class="s_adjustItem" id='shrinkup' data-title="shrinkup">
+                  <i class="fas fa-compress" aria-hidden="true"></i> <!-- Shrink Vertically -->
+              </div>
+              <div class="s_adjustItem" id='reset' data-title="reset">
+                <i class="fas fa-sync" aria-hidden="true"></i> 
+              </div>  
+            </div>
+            <div class="circlebox">
+              <div class="selectHeader line-text">
+                Upload Your Left Sleeve Logo
+                <span class="closeButton" id="closeButton21">&times;</span>
+              </div>
+              <div id="uploadImage2">
+                  <input type="file" id="imageUpload2" accept="image/*">
+                  <div id="imagePreview2"></div> <!-- Placeholder for image preview -->
+              </div>
+
+            </div>
+            
+            <div class="'circlebox">
+                <div  id="lsleeveList">
+                  <div class="selectHeader line-text">
+                    Select left Sleeve Logo
+                    <span class="closeButton" id="closeButton24">&times;</span>
+                  </div>
+                  
+                  <div class="leftsleeveItem" id='full' data-title="usefile">
+                    <img src="assets\textures\uploaded.png" alt="One shade" />
+                  </div>
+                  <div class="leftsleeveItem" data-title="southern">
+                    <img src="assets\textures\southernleague.png" alt="Half and half" />
+                  </div>
+                  <div class="leftsleeveItem" data-title="toolstation">
+                    <img src="assets\textures\toolstation.png" alt="Spotty" />
+                  </div>
+                  <div class="leftsleeveItem" data-title="faacreddited">
+                    <img src="assets\textures\faaccredited.png" alt="Areas" />
+                  </div>
+                  <div class="leftsleeveItem" data-title="faacreddited1">
+                    <img src="assets\textures\faacreddited1.png" alt="Areas" />
+                  </div>
+                  <div class="leftsleeveItem" data-title="faacreddited2">
+                    <img src="assets\textures\faacreddited2.png" alt="Areas" />
+                  </div>
+                
+              </div>
+              <div class="circlebox">
+                <div class="selectHeader line-text">
+                  Upload Your Right Sleeve Logo
+                  <span class="closeButton" id="closeButton22">&times;</span>
+                </div>
+                <div id="uploadImage3">
+                    <input type="file" id="imageUpload3" accept="image/*">
+                    <div id="imagePreview3"></div> <!-- Placeholder for image preview -->
+                </div>
+              
+              </div>  
+              <div class="'circlebox">
+                <div  id="rsleeveList">
+                  <div class="selectHeader line-text">
+                    Select Right Sleeve Logo
+                    <span class="closeButton" id="closeButton23">&times;</span>
+                  </div>
+                  
+                  <div class="rightsleeveItem" id='full' data-title="usefile">
+                    <img src="assets\textures\uploaded.png" alt="One shade" />
+                  </div>
+                  <div class="rightsleeveItem" data-title="southern">
+                    <img src="assets\textures\southernleague.png" alt="Half and half" />
+                  </div>
+                  <div class="rightsleeveItem" data-title="toolstation">
+                    <img src="assets\textures\toolstation.png" alt="Spotty" />
+                  </div>
+                  <div class="rightsleeveItem" data-title="faacreddited">
+                    <img src="assets\textures\faaccredited.png" alt="Areas" />
+                  </div>
+                  <div class="rightsleeveItem" data-title="faacreddited1">
+                    <img src="assets\textures\faacreddited1.png" alt="Areas" />
+                  </div>
+                  <div class="rightsleeveItem" data-title="faacreddited2">
+                    <img src="assets\textures\faacreddited2.png" alt="Areas" />
+                  </div>
+                </div>
+                
+              </div>
+            
+    
+            </div>
+            
+
+            </div>
+            
+          </div>
+            
+
+            
+            
+    
+
+        </div>
+
+
+          
+    
+
+        </div>
+
+        
+    
+
+
+
+
+
+      </div>
+    
+
+      <div class="palette" id="palette">
+        <div class="selectHeader line-text">Palette</div>
+        
+          <svg class="chevronSvg" x="0px" y="0px" viewBox="0 0 15.4 15.4" xml:space="preserve">
+            <g>
+              <polyline vector-effect="non-scaling-stroke" stroke-width="2" fill="none" stroke-miter="" limit="10" points="0.4,15 7.7,7.7 0.4,0.4"></polyline>
+              <!-- <polyline vector-effect="non-scaling-stroke" stroke-width="2" fill="none" stroke-miter="" limit="10" points="15,15 7.7,7.7 15,0.4 	"></polyline> -->
+            </g>
+          </svg>
+        </a>
+        <div class="paletteRows">
+          <!-- ///// White ///// -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="white" vector-effect="non-scaling-stroke" fill="#FEFEFE" stroke-miter="" limit="10" points="0,0 20,0 20,20 0,20 0,0"></polyline>
+                <!-- <rect width="15" height="15" stroke-width="0.1" fill="none"/> -->
+            </svg>
+          </a>
+          <!-- Light grey -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="lightGrey" vector-effect="non-scaling-stroke" fill="#C7C8CA" stroke-miter="" limit="10"points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- Mid grey -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="midGrey" vector-effect="non-scaling-stroke" fill="#939598" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- Dark grey -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="darkGrey" vector-effect="non-scaling-stroke" fill="#636466" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- Black -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="black" vector-effect="non-scaling-stroke" fill="#231F20" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- ///// Blues ///// -->
+          <!-- Azure -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="azure" vector-effect="non-scaling-stroke" fill="#ABE1FA" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+                <!-- <rect width="15" height="15" stroke-width="0.1" fill="none"/> -->
+            </svg>
+          </a>
+          <!-- Sky -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="sky" vector-effect="non-scaling-stroke" fill="#3698D4" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- Royal -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="royal" vector-effect="non-scaling-stroke" fill="#0060A9" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- Navy -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="navy" vector-effect="non-scaling-stroke" fill="#00184A" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- Dark Navy -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="darkNavy" vector-effect="non-scaling-stroke" fill="#000032" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- ///// Greens ///// -->
+          <!-- Dark Green -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="darkGreen" vector-effect="non-scaling-stroke" fill="#003C20" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- Forest -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="forest" vector-effect="non-scaling-stroke" fill="#00593B" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- Emerald -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="emerald" vector-effect="non-scaling-stroke" fill="#008C49" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- Jade -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="jade" vector-effect="non-scaling-stroke" fill="#00A14B" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- Lime -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="lime" vector-effect="non-scaling-stroke" fill="#72BF44" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- ///// Reds ///// -->
+          <!-- Maroon -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="maroon" vector-effect="non-scaling-stroke" fill="#7A1315" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- Scarlet -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="scarlet" vector-effect="non-scaling-stroke" fill="#C9191F" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- Bright red -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="brightRed" vector-effect="non-scaling-stroke" fill="#ED1C24" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- Light Red -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="lightRed" vector-effect="non-scaling-stroke" fill="#EF4345" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- Tangerine -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="tangerine" vector-effect="non-scaling-stroke" fill="#F04E23" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- ///// Yellows ///// -->
+          <!-- Orange -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="orange" vector-effect="non-scaling-stroke" fill="#F37021" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- Amber -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="amber" vector-effect="non-scaling-stroke" fill="#FBAA29" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- Gold -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="gold" vector-effect="non-scaling-stroke" fill="#FFD400" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- Yellow -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="yellow" vector-effect="non-scaling-stroke" fill="#FFF200" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- Lemon -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="lemon" vector-effect="non-scaling-stroke" fill="#FFF9AE" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- ///// Purples ///// -->
+          <!-- Liche purple -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="lichePurple" vector-effect="non-scaling-stroke" fill="#45196F" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- Emperors children -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="emperorsChildren" vector-effect="non-scaling-stroke" fill="#662D91" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- Lavender -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="lavender" vector-effect="non-scaling-stroke" fill="#956DAF" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- Lilac -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="lilac" vector-effect="non-scaling-stroke" fill="#C7A0CB" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- velvet -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="velvet" vector-effect="non-scaling-stroke" fill="#D3C8E3" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- ///// Pinks ///// -->
+          <!-- Burgundy -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="burgundy" vector-effect="non-scaling-stroke" fill="#7A003C" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- Raspberry -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="raspberry" vector-effect="non-scaling-stroke" fill="#9E1F63" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- Grape -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="grape" vector-effect="non-scaling-stroke" fill="#D11A6F  " stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- Magenta -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="magenta" vector-effect="non-scaling-stroke" fill="#EC008C" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+          <!-- Rhubarb -->
+          <a class="colourBox">
+            <svg class="paletteChevronSvg" x="0px" y="0px" viewBox="0 0 10 10" xml:space="preserve">
+                <polyline id="rhubarb" vector-effect="non-scaling-stroke" fill="#EE3E7B" stroke-miter="" limit="10" points="0,0 10,0 10,10 0,10 0,0"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <main class="scene" id="webgl"></main>
+      <div class="texture" >
+        <svg id='areas' class ='areas' width="1024" height="1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          
+          <rect id="primaryOnSvg" class="primary" width="1000" height="1000" fill="white"/>
+          <circle id="secondaryOnSvg" class="secondary" cx="810" cy="300" r="500" fill="white"/>
+          <rect id="tertiaryOnSvg" class="tertiary" x="0" y="500" width="1000" height="500" fill="white"/>
+          <rect id="accentOnSvg" class="accent" x="0" y="400" width="1000" height="100" fill="white"/>
+        </svg>
+        
+        
+      </div>
+      <div  class="texture" >
+        <svg id='full'class ='full' width="1024" height="1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          
+          <rect id="primaryOnSvg" class="primary" width="1000" height="1000" fill="white"/>
+
+
+
+          
+        </svg>
+        
+        
+      </div>
+      <div  class="texture" >
+        <svg id='half'class ='half' width="1024" height="1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          
+          <rect id="primaryOnSvg" class="primary" width="1000" height="1000" fill="white"/>
+          <rect id="secondaryOnSvg" class="secondary"  x="0" y="500" width="1000" height="500" fill="white"/>
+
+
+
+          
+        </svg>
+        
+        
+      </div>
+      <div class="texture">
+        <svg id='dots' class="dots" width="1024" height="1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <rect id="secondaryOnSvg" class="secondary" width="1000" height="1000" fill="white"/>
+          <!-- Dots pattern -->
+
+
+          <circle class="primary" cx="400" cy="400" r="130" fill="white"/>
+
+
+        </svg>
+      </div>
+      <div  class="texture">
+        <svg id='vertical-stripes' class="vertical-stripes" width="1024" height="1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <rect id="primaryOnSvg" class="primary" width="1000" height="1000" fill="white"/>
+          <!-- Vertical stripes pattern -->
+          <rect class="primary" x="100" y="0" width="100" height="1000" fill="white"/>
+          <rect class="secondary" x="300" y="0" width="100" height="1000" fill="white"/>
+          <rect class="tertiary" x="500" y="0" width="100" height="1000" fill="white"/>
+          <rect class="accent" x="700" y="0" width="100" height="1000" fill="white"/>
+          <rect class="primary" x="900" y="0" width="100" height="1000" fill="white"/>
+        </svg>
+      </div>
+      <div class="texture">
+        <svg id ='horizontal-stripes' class="horizontal-stripes" width="1024" height="1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <rect id="primaryOnSvg" class="primary" width="1000" height="1000" fill="white"/>
+          <!-- Horizontal stripes pattern -->
+          <rect class="primary" x="0" y="100" width="1000" height="100" fill="white"/>
+          <rect class="secondary" x="0" y="300" width="1000" height="100" fill="white"/>
+          <rect class="tertiary" x="0" y="500" width="1000" height="100" fill="white"/>
+          <rect class="accent" x="0" y="700" width="1000" height="100" fill="white"/>
+          <rect class="primary" x="0" y="900" width="1000" height="100" fill="white"/>
+        </svg>
+      </div>
+      <div class="texture">
+        <svg id='diagonal-stripes' class="diagonal-stripes" width="1024" height="1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <rect id="primaryOnSvg" class="primary" width="1000" height="1000" fill="white"/>
+          <!-- Diagonal stripes pattern -->
+          <line class="primary" x1="0" y1="3000" x2="800" y2="1000" stroke="white" stroke-width="100"/>
+          <line class="secondary" x1="0" y1="0" x2="1000" y2="1000" stroke="white" stroke-width="100"/>
+          <line class="tertiary" x1="200" y1="0" x2="1000" y2="800" stroke="white" stroke-width="100"/>
+          <line class="accent" x1="400" y1="0" x2="1000" y2="600" stroke="white" stroke-width="100"/>
+        </svg>
+      </div>
+      <div class="texture">
+        <svg id='zigzag' class="zigzag" width="1024" height="1024" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+          <rect id="primaryOnSvg" class="primary" width="100%" height="100%" fill="white"/>
+          
+          <!-- Zigzag pattern with absolute pixel values -->
+          <path class="primary" d="M 0 204 L 102 102 L 204 204 L 306 102 L 408 204 L 510 102 L 612 204 L 714 102 L 816 204 L 918 102 L 1024 204" fill="none" stroke="white" stroke-width="2"/>
+          <path class="secondary" d="M 0 408 L 102 306 L 204 408 L 306 306 L 408 408 L 510 306 L 612 408 L 714 306 L 816 408 L 918 306 L 1024 408" fill="none" stroke="white" stroke-width="2"/>
+          <path class="tertiary" d="M 0 612 L 102 510 L 204 612 L 306 510 L 408 612 L 510 510 L 612 612 L 714 510 L 816 612 L 918 510 L 1024 612" fill="none" stroke="white" stroke-width="2"/>
+          <path class="accent" d="M 0 816 L 102 714 L 204 816 L 306 714 L 408 816 L 510 714 L 612 816 L 714 714 L 816 816 L 918 714 L 1024 816" fill="none" stroke="white" stroke-width="2"/>
+        </svg>
+      </div>
+    </div>
+
+    <script>
+      
+      $(document).ready(function() {
+        var currentSelector = null;
+
+        // Function to show the palette when a selector is clicked
+        $('.selectorText').click(function() {
+            currentSelector = $(this).find('svg polyline').attr('id');
+
+            var palette = $('#palette');
+            // Remove the offset calculations for top and left
+            palette.css({
+                display: 'block' // Only set display to block
+        });
+});
+
+
+        // Function to hide the palette and apply the selected color
+        $('.colourBox').click(function() {
+          var selectedColor = $(this).find('polyline').attr('fill');
+          if (currentSelector) {
+            $('#' + currentSelector).attr('fill', selectedColor);
+          }
+          $('#palette').hide();
+        });
+
+        // Hide the palette if clicking outside
+        $(document).click(function(event) {
+          if (!$(event.target).closest('.selectorText, .palette').length) {
+            $('#palette').hide();
+          }
+        });
+      });
+    </script>
+    <script>
+      uploadedFile=''
+      document.getElementById('imageUpload').addEventListener('change', function(event) {
+          const imagePreview = document.getElementById('imagePreview');
+          const file = event.target.files[0];
+
+          // Add styling to create a blue box
+          
+          imagePreview.style.padding = "10px";  // Padding inside the box
+          imagePreview.style.backgroundColor = '#5F9EA0'; /* Light blue background */
+          imagePreview.style.display = "inline-block";  // To make the box fit around the image
+
+          if (file) {
+              const reader = new FileReader();
+
+              reader.onload = function(e) {
+                  imagePreview.innerHTML = `<img src="${e.target.result}" alt="Uploaded Image" style="max-width: 20%; height: auto;">`;
+                  uploadedFile = e.target.result;
+                  
+              };
+              
+
+              reader.readAsDataURL(file);
+              
+          } else {
+              imagePreview.innerHTML = ''; // Clear preview if no file is selected
+              imagePreview.style.border = "none";  // Remove the blue box if no image is selected
+              imagePreview.style.backgroundColor = "transparent";
+          }
+      });
+      uploadedFile1=''
+      document.getElementById('imageUpload1').addEventListener('change', function(event) {
+          const imagePreview1 = document.getElementById('imagePreview1');
+          const file1 = event.target.files[0];
+
+          // Add styling to create a blue box
+          
+          imagePreview1.style.padding = "10px";  // Padding inside the box
+          imagePreview1.style.backgroundColor = '#5F9EA0'; /* Light blue background */
+          imagePreview1.style.display = "inline-block";  // To make the box fit around the image
+
+          if (file1) {
+              const reader = new FileReader();
+
+              reader.onload = function(e) {
+                  imagePreview1.innerHTML = `<img src="${e.target.result}" alt="Uploaded Image" style="max-width: 20%; height: auto;">`;
+                  uploadedFile1 = e.target.result;
+                  
+              };
+              
+
+              reader.readAsDataURL(file1);
+              
+          } else {
+              imagePreview1.innerHTML = ''; // Clear preview if no file is selected
+              imagePreview1.style.border = "none";  // Remove the blue box if no image is selected
+              imagePreview1.style.backgroundColor = "transparent";
+          }
+      });
+      uploadedFile2=''
+      document.getElementById('imageUpload2').addEventListener('change', function(event) {
+          const imagePreview2 = document.getElementById('imagePreview2');
+          const file2 = event.target.files[0];
+
+          // Add styling to create a blue box
+          
+          imagePreview2.style.padding = "10px";  // Padding inside the box
+          imagePreview2.style.backgroundColor = '#5F9EA0'; /* Light blue background */
+          imagePreview2.style.display = "inline-block";  // To make the box fit around the image
+
+          if (file2) {
+              const reader = new FileReader();
+
+              reader.onload = function(e) {
+                  imagePreview2.innerHTML = `<img src="${e.target.result}" alt="Uploaded Image" style="max-width: 20%; height: auto;">`;
+                  uploadedFile2 = e.target.result;
+                  
+              };
+              
+
+              reader.readAsDataURL(file2);
+              
+          } else {
+              imagePreview2.innerHTML = ''; // Clear preview if no file is selected
+              imagePreview2.style.border = "none";  // Remove the blue box if no image is selected
+              imagePreview2.style.backgroundColor = "transparent";
+          }
+      });
+      uploadedFile3=''
+      document.getElementById('imageUpload3').addEventListener('change', function(event) {
+          const imagePreview3 = document.getElementById('imagePreview3');
+          const file3 = event.target.files[0];
+
+          // Add styling to create a blue box
+          
+          imagePreview3.style.padding = "10px";  // Padding inside the box
+          imagePreview3.style.backgroundColor = '#5F9EA0'; /* Light blue background */
+          imagePreview3.style.display = "inline-block";  // To make the box fit around the image
+
+          if (file3) {
+              const reader = new FileReader();
+
+              reader.onload = function(e) {
+                  imagePreview3.innerHTML = `<img src="${e.target.result}" alt="Uploaded Image" style="max-width: 20%; height: auto;">`;
+                  uploadedFile3 = e.target.result;
+                  
+              };
+              
+
+              reader.readAsDataURL(file3);
+              
+          } else {
+              imagePreview3.innerHTML = ''; // Clear preview if no file is selected
+              imagePreview3.style.border = "none";  // Remove the blue box if no image is selected
+              imagePreview3.style.backgroundColor = "transparent";
+          }
+      });
+
+      uploadedFile4=''
+      uploadedFile5=''
+
+      document.getElementById('imageUpload4').addEventListener('change', function(event) {
+        const imagePreview4 = document.getElementById('imagePreview4');
+        const file4 = event.target.files[0];
+
+        // Add styling to create a blue box
+        imagePreview4.style.padding = "10px";  // Padding inside the box
+        imagePreview4.style.backgroundColor = '#5F9EA0'; /* Light blue background */
+        imagePreview4.style.display = "inline-block";  // To make the box fit around the image
+
+        if (file4) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const img = new Image();
+                img.src = e.target.result;
+                imagePreview4.innerHTML = `<img src="${e.target.result}" alt="Uploaded Image" style="max-width: 20%; height: auto;">`;
+                uploadedFile5=e.target.result;
+
+                img.onload = function() {
+                    // Create a canvas to draw the rotated image
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+
+                    // Set canvas dimensions for a 90-degree rotation
+                    canvas.width = img.height; // Width becomes the original height
+                    canvas.height = img.width; // Height becomes the original width
+
+                    // Rotate the image 90 degrees clockwise
+                    ctx.translate(canvas.width / 2, canvas.height / 2); // Move to center
+                    ctx.rotate(Math.PI / 2); // Rotate 90 degrees
+                    ctx.drawImage(img, -img.width / 2, -img.height / 2); // Draw image centered
+
+
+                    // Create the new rotated image as a data URL
+                    uploadedFile4 = canvas.toDataURL('image/png'); // Store the rotated image
+
+                    // Display the rotated image in the preview
+                    
+                };
+            };
+
+            reader.readAsDataURL(file4);
+        } else {
+            imagePreview4.innerHTML = ''; // Clear preview if no file is selected
+            imagePreview4.style.border = "none";  // Remove the blue box if no image is selected
+            imagePreview4.style.backgroundColor = "transparent";
+        }
+    });
+    uploadedFile6=''
+
+    document.getElementById('imageUpload5').addEventListener('change', function(event) {
+        const imagePreview4 = document.getElementById('imagePreview5');
+        const file5 = event.target.files[0];
+
+        // Add styling to create a blue box
+        imagePreview5.style.padding = "10px";  // Padding inside the box
+        imagePreview5.style.backgroundColor = '#5F9EA0'; /* Light blue background */
+        imagePreview5.style.display = "inline-block";  // To make the box fit around the image
+
+        if (file5) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const img = new Image();
+                img.src = e.target.result;
+                imagePreview5.innerHTML = `<img src="${e.target.result}" alt="Uploaded Image" style="max-width: 20%; height: auto;">`;
+                uploadedFile6=e.target.result;
+
+                img.onload = function() {
+                    // Create a canvas to draw the rotated image
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+
+                    // Set canvas dimensions for a 90-degree rotation
+                    canvas.width = img.height; // Width becomes the original height
+                    canvas.height = img.width; // Height becomes the original width
+
+                    // Rotate the image 90 degrees clockwise
+                    ctx.translate(canvas.width / 2, canvas.height / 2); // Move to center
+                    ctx.rotate(Math.PI / 2); // Rotate 90 degrees
+                    ctx.drawImage(img, -img.width / 2, -img.height / 2); // Draw image centered
+
+
+                    // Create the new rotated image as a data URL
+                    uploadedFile5 = canvas.toDataURL('image/png'); // Store the rotated image
+
+                    // Display the rotated image in the preview
+                    
+                };
+            };
+
+            reader.readAsDataURL(file5);
+        } else {
+            imagePreview5.innerHTML = ''; // Clear preview if no file is selected
+            imagePreview5.style.border = "none";  // Remove the blue box if no image is selected
+            imagePreview5.style.backgroundColor = "transparent";
+        }
+    });
+
+
+
+
+      // Ensure the DOM is fully loaded before attaching event listeners
+      document.addEventListener('DOMContentLoaded', function () {
+        const helpWindow = document.getElementById('helpWindow');
+        const helpWindow1 = document.getElementById('helpWindow1');
+        const basketWindow = document.getElementById('basketWindow');
+        const basketWindow1 = document.getElementById('basketWindow1');
+        const sizeWindow = document.getElementById('sizeWindow');
+        const sizeWindow1 = document.getElementById('sizeWindow1');
+        const selectorWindow = document.getElementById('selectorWindow');
+        const selectorWindow1 = document.getElementById('selectorWindow1');
+
+        const resizeHandle = selectorWindow1.querySelector('.resizeHandle'); // Right handle
+        const resizeHandle1 = helpWindow.querySelector('.resizeHandle1'); // Left handle
+        const resizeHandle2 = sizeWindow.querySelector('.resizeHandle2'); // Left handle
+        const resizeHandle3 = basketWindow.querySelector('.resizeHandle3'); // Left handle
+
+        let isResizing = null;
+
+        resizeHandle.addEventListener('mousedown', function (e) {
+            isResizing = {
+                window: selectorWindow,
+                window1: selectorWindow1,
+                direction: 'right'
+            };
+            document.body.style.cursor = 'ew-resize';
+        });
+        resizeHandle1.addEventListener('mousedown', function (e) {
+            isResizing = {
+                window: helpWindow,
+                
+                direction: 'left'
+            };
+            document.body.style.cursor = 'ew-resize';
+        });
+        resizeHandle2.addEventListener('mousedown', function (e) {
+            isResizing = {
+                window: sizeWindow,
+                
+                direction: 'left'
+            };
+            document.body.style.cursor = 'ew-resize';
+        });
+        resizeHandle3.addEventListener('mousedown', function (e) {
+            isResizing = {
+                window: basketWindow,
+                
+                direction: 'left'
+            };
+            document.body.style.cursor = 'ew-resize';
+        });
+
+        document.addEventListener('mousemove', function (e) {
+            if (!isResizing) return;
+
+            if (isResizing.direction === 'right') {
+                // Right handle: Calculate width based on the left edge of the box
+                const newWidth = e.clientX - isResizing.window.getBoundingClientRect().left;
+                isResizing.window.style.width = `${newWidth}px`;
+                const newWidth1 = e.clientX - isResizing.window1.getBoundingClientRect().left;
+                isResizing.window1.style.width = `${newWidth1 + 10}px`;
+            } else {
+                // Left handle: Calculate width based on the right edge of the box
+                const newWidth = isResizing.window.getBoundingClientRect().right - e.clientX;
+                isResizing.window.style.width = `${newWidth}px`;
+
+            }
+        });
+
+        document.addEventListener('mouseup', function () {
+            if (isResizing) {
+                isResizing = null;
+                document.body.style.cursor = 'default';
+            }
+        });
+      });
+
+      
+      document.addEventListener('DOMContentLoaded', function () {
+
+        
+          
+          const selectorWindow = document.getElementById('selectorWindow');
+          const selectorStyle = document.getElementById('selectorStyle');
+          const selectorContent = document.getElementById('selectorContent');
+          const selectorLogo = document.getElementById('selectorLogo');
+          const selectorSponsor = document.getElementById('selectorSponsor');
+          const selectorBadge = document.getElementById('selectorBadge');
+          const selectorBack = document.getElementById('selectorBack');
+          const selectorExtras = document.getElementById('selectorExtras');
+          const Make_Orders = document.getElementById('Make_Orders');
+
+          const closeButton = document.getElementById('closeButton');
+          const closeButton1 = document.getElementById('closeButton1');
+          const closeButton2 = document.getElementById('closeButton2');
+          const closeButton3 = document.getElementById('closeButton3');
+          const closeButton4 = document.getElementById('closeButton4');
+          const closeButton5 = document.getElementById('closeButton5');
+          const closeButton6 = document.getElementById('closeButton6');
+          const closeButton7 = document.getElementById('closeButton7');
+          const closeButton8 = document.getElementById('closeButton8');
+          const closeButton9 = document.getElementById('closeButton9');
+          const closeButton10 = document.getElementById('closeButton10');
+          const closeButton11 = document.getElementById('closeButton11');
+          const closeButton12 = document.getElementById('closeButton12');
+          const closeButton13 = document.getElementById('closeButton13');
+          const closeButton14 = document.getElementById('closeButton14');
+          const closeButton15 = document.getElementById('closeButton15');
+          const closeButton16 = document.getElementById('closeButton16');
+          const closeButton17 = document.getElementById('closeButton17');
+          const closeButton18 = document.getElementById('closeButton18');
+          const closeButton19 = document.getElementById('closeButton19');
+          const closeButton20 = document.getElementById('closeButton20');
+          const closeButton21 = document.getElementById('closeButton21');
+          const closeButton22 = document.getElementById('closeButton22');
+          const closeButton23 = document.getElementById('closeButton23');
+          const closeButton24 = document.getElementById('closeButton24');
+          const closeButton25 = document.getElementById('closeButton25');
+          const closeButton26 = document.getElementById('closeButton26');
+          const closeButton27 = document.getElementById('closeButton27');
+          const closeButton28 = document.getElementById('closeButton28');
+          const closeButton29 = document.getElementById('closeButton29');
+          const closeButton30 = document.getElementById('closeButton30');
+          const closeButton31 = document.getElementById('closeButton31');
+          const closeButton32 = document.getElementById('closeButton32');
+          const closeButton33 = document.getElementById('closeButton33');
+          const closeButton34 = document.getElementById('closeButton34');
+          const closeButton35 = document.getElementById('closeButton35');
+          
+          
+
+
+          const selectColorButton = document.getElementById('selectColorButton');
+          const selectStyleButton = document.getElementById('selectStyleButton');
+          const selectLogoButton = document.getElementById('selectLogoButton');
+          const selectSponsorButton = document.getElementById('selectSponsorButton');
+          const selectBackButton = document.getElementById('selectBackButton');
+          const selectExtrasButton = document.getElementById('selectExtrasButton');
+          const Make_Order = document.getElementById('Make_Order');
+          const View_All = document.getElementById('View_All');
+
+          
+
+
+          // Show the selector window
+          selectorWindow.style.display = 'block';
+
+          // Expand the selector window to show color content when the button is clicked
+          selectColorButton.addEventListener('click', function() {
+              console.log("Color button clicked"); // Debugging log
+              // Close the style content
+              selectorStyle.classList.remove('open'); 
+              selectorLogo.classList.remove('open'); 
+              selectorBadge.classList.remove('open');
+              selectorSponsor.classList.remove('open');
+              selectorBack.classList.remove('open');
+              Make_Orders.classList.remove('open');
+              
+
+              // Open the color content
+              selectorContent.classList.toggle('open'); 
+              
+          });
+          // Expand the selector window to show style content when the button is clicked
+          selectStyleButton.addEventListener('click', function() {
+              
+              // Close the color content
+              selectorContent.classList.remove('open'); 
+              selectorLogo.classList.remove('open');
+              selectorBadge.classList.remove('open');
+              selectorSponsor.classList.remove('open');
+              selectorBack.classList.remove('open');
+              Make_Orders.classList.remove('open');
+
+              
+              
+
+              // Open the style content
+              selectorStyle.classList.toggle('open'); 
+             
+              
+          });
+
+          selectLogoButton.addEventListener('click', function() {
+              
+              // Close the color content
+              selectorContent.classList.remove('open'); 
+              selectorStyle.classList.remove('open');
+              selectorBadge.classList.remove('open');
+              selectorSponsor.classList.remove('open');
+              selectorBack.classList.remove('open');
+              selectorExtras.classList.remove('open');
+              Make_Orders.classList.remove('open');
+
+
+              
+              
+
+              // Open the style content
+              selectorLogo.classList.toggle('open'); 
+             
+              
+          });
+
+          selectBadgeButton.addEventListener('click', function() {
+              
+              // Close the color content
+              selectorContent.classList.remove('open'); 
+              selectorStyle.classList.remove('open');
+              selectorLogo.classList.remove('open');
+              selectorSponsor.classList.remove('open');
+              selectorBack.classList.remove('open');
+              selectorExtras.classList.remove('open');
+              Make_Orders.classList.remove('open');
+
+
+              
+              
+
+              // Open the style content
+              selectorBadge.classList.toggle('open'); 
+             
+              
+          });
+          selectSponsorButton.addEventListener('click', function() {
+              
+              // Close the color content
+              selectorContent.classList.remove('open'); 
+              selectorStyle.classList.remove('open');
+              selectorLogo.classList.remove('open');
+              selectorBadge.classList.remove('open');
+              selectorBack.classList.remove('open');
+              selectorExtras.classList.remove('open');
+              Make_Orders.classList.remove('open');
+
+
+              
+              
+
+              // Open the style content
+              selectorSponsor.classList.toggle('open'); 
+             
+              
+          });
+          selectBackButton.addEventListener('click', function() {
+              
+              // Close the color content
+              selectorContent.classList.remove('open'); 
+              selectorStyle.classList.remove('open');
+              selectorLogo.classList.remove('open');
+              selectorBadge.classList.remove('open');
+              selectorSponsor.classList.remove('open');
+              selectorExtras.classList.remove('open');
+              Make_Orders.classList.remove('open');
+
+
+              
+              
+
+              // Open the style content
+              selectorBack.classList.toggle('open'); 
+             
+              
+          });
+          selectExtrasButton.addEventListener('click', function() {
+              
+              // Close the color content
+              selectorContent.classList.remove('open'); 
+              selectorStyle.classList.remove('open');
+              selectorLogo.classList.remove('open');
+              selectorBadge.classList.remove('open');
+              selectorSponsor.classList.remove('open');
+              selectorBack.classList.remove('open');
+              Make_Orders.classList.remove('open');
+
+
+              
+              
+
+              // Open the style content
+              selectorExtras.classList.toggle('open'); 
+             
+              
+          });
+          Make_Order.addEventListener('click', function() {
+              
+              // Close the color content
+              selectorContent.classList.remove('open'); 
+              selectorStyle.classList.remove('open');
+              selectorLogo.classList.remove('open');
+              selectorBadge.classList.remove('open');
+              selectorSponsor.classList.remove('open');
+              selectorBack.classList.remove('open');
+              selectorExtras.classList.remove('open');
+
+
+              
+              
+
+              // Open the style content
+              Make_Orders.classList.toggle('open'); 
+             
+              
+          });
+
+
+          // Close the selector window when the close button is clicked
+          closeButton.addEventListener('click', function() {
+              selectorContent.classList.remove('open'); // Collapse color content
+              
+          });
+          closeButton15.addEventListener('click', function() {
+              selectorBack.classList.remove('open'); // Collapse color content
+              
+          });
+          closeButton6.addEventListener('click', function() {
+              selectorBadge.classList.remove('open'); // Collapse color content
+              
+          });
+          closeButton7.addEventListener('click', function() {
+              selectorBadge.classList.remove('open'); // Collapse color content
+              
+          });
+          closeButton8.addEventListener('click', function() {
+              selectorBadge.classList.remove('open'); // Collapse color content
+              
+          });
+          closeButton9.addEventListener('click', function() {
+              selectorBadge.classList.remove('open'); // Collapse color content
+              
+          });
+          closeButton16.addEventListener('click', function() {
+              selectorBack.classList.remove('open'); // Collapse color content
+              
+          });
+          closeButton17.addEventListener('click', function() {
+              selectorBack.classList.remove('open'); // Collapse color content
+              
+          });
+          closeButton18.addEventListener('click', function() {
+              selectorBack.classList.remove('open'); // Collapse color content
+              
+          });
+          closeButton19.addEventListener('click', function() {
+              selectorBack.classList.remove('open'); // Collapse color content
+              
+          });
+
+          closeButton1.addEventListener('click', function() {
+              selectorStyle.classList.remove('open'); // Collapse style content
+              
+          });
+          closeButton2.addEventListener('click', function() {
+              selectorLogo.classList.remove('open'); // Collapse style content
+              
+          });
+          closeButton3.addEventListener('click', function() {
+              selectorLogo.classList.remove('open'); // Collapse style content
+              
+          });
+          closeButton4.addEventListener('click', function() {
+              selectorLogo.classList.remove('open'); // Collapse style content
+              
+          });
+          closeButton5.addEventListener('click', function() {
+              selectorLogo.classList.remove('open'); // Collapse style content
+              
+          });
+          closeButton10.addEventListener('click', function() {
+              selectorSponsor.classList.remove('open'); // Collapse style content
+              
+          });
+          closeButton11.addEventListener('click', function() {
+              selectorSponsor.classList.remove('open'); // Collapse style content
+              
+          });
+          closeButton12.addEventListener('click', function() {
+              selectorSponsor.classList.remove('open'); // Collapse style content
+              
+          });
+          closeButton13.addEventListener('click', function() {
+              selectorSponsor.classList.remove('open'); // Collapse style content
+              
+          });
+          closeButton14.addEventListener('click', function() {
+              selectorBack.classList.remove('open'); // Collapse style content
+              
+          });
+          closeButton20.addEventListener('click', function() {
+              selectorBack.classList.remove('open'); // Collapse style content
+              
+          });
+          closeButton21.addEventListener('click', function() {
+              selectorSponsor.classList.remove('open'); // Collapse style content
+              
+          });
+          closeButton22.addEventListener('click', function() {
+              selectorSponsor.classList.remove('open'); // Collapse style content
+              
+          });
+          closeButton27.addEventListener('click', function() {
+              selectorExtras.classList.remove('open'); // Collapse style content
+              
+          });
+          closeButton35.addEventListener('click', function() {
+              Make_Orders.classList.remove('open'); // Collapse style content
+              
+          });
+          closeButton28.addEventListener('click', function() {
+              selectorExtras.classList.remove('open'); // Collapse style content
+              
+          });
+          closeButton23.addEventListener('click', function() {
+              selectorSponsor.classList.remove('open'); // Collapse style content
+              
+          });
+          closeButton24.addEventListener('click', function() {
+              selectorSponsor.classList.remove('open'); // Collapse style content
+              
+          });
+          closeButton25.addEventListener('click', function() {
+              selectorLogo.classList.remove('open'); // Collapse style content
+              
+          });
+          closeButton26.addEventListener('click', function() {
+              selectorLogo.classList.remove('open'); // Collapse style content
+              
+          });
+          closeButton29.addEventListener('click', function() {
+              selectorExtras.classList.remove('open'); // Collapse style content
+              
+          });
+          closeButton30.addEventListener('click', function() {
+              selectorBack.classList.remove('open'); // Collapse style content
+              
+          });
+          closeButton31.addEventListener('click', function() {
+              selectorBack.classList.remove('open'); // Collapse style content
+              
+          });
+          closeButton32.addEventListener('click', function() {
+              selectorBack.classList.remove('open'); // Collapse style content
+              
+          });
+          closeButton33.addEventListener('click', function() {
+              selectorBack.classList.remove('open'); // Collapse style content
+              
+          });
+          closeButton34.addEventListener('click', function() {
+              selectorBack.classList.remove('open'); // Collapse style content
+              
+          });
+
+
+      });
+    </script>
+    <script>
+      let svgTitle = '';
+      let logoTitle='';
+      let numberTitle = '';
+      let textTitle = '';
+      let tex2tTitle = '';
+      document.addEventListener('DOMContentLoaded', function () {
+        const styleItems = document.querySelectorAll('.styleItem'); // Select all style items
+        const backItems = document.querySelectorAll('.backItem'); // Select all style items
+        const nobadgeItems = document.querySelectorAll('.nobadgeItem'); // Select all style items
+        const logoItems = document.querySelectorAll('.logoItem'); // Select all style items
+        const sizeItems = document.querySelectorAll('.sizeItem'); // Select all style items
+        const colourItems = document.querySelectorAll('.colourItem'); // Select all style items
+        const colourItems1 = document.querySelectorAll('.colourItem1'); // Select all style items
+        const colourItems2 = document.querySelectorAll('.colourItem2'); // Select all style items
+        const adjustItems = document.querySelectorAll('.adjustItem'); // Select all style items
+        const badgeItems = document.querySelectorAll('.badgeItem'); // Select all style items
+        const b_sizeItems = document.querySelectorAll('.b_sizeItem'); // Select all style items
+        const b_adjustItems = document.querySelectorAll('.b_adjustItem'); // Select all style items
+        const sponsorItems = document.querySelectorAll('.sponsorItem'); // Select all style items
+        const sponsorimgItems = document.querySelectorAll('.sponsorItemimg'); // Select all style items
+        const s_sizeItems = document.querySelectorAll('.s_sizeItem'); // Select all style items
+        const bs_sizeItems = document.querySelectorAll('.bs_sizeItem'); // Select all style items
+        
+        const s_adjustItems = document.querySelectorAll('.s_adjustItem'); // Select all style items
+        const backcolourItems = document.querySelectorAll('.backcolourItem'); // Select all style items
+        const backadjustItems = document.querySelectorAll('.backadjustItem'); // Select all style items
+        const backcolour1Items = document.querySelectorAll('.backcolourItem1'); // Select all style items
+        const backadjust1Items = document.querySelectorAll('.backadjustItem1'); // Select all style items
+        const backItems1 = document.querySelectorAll('.backItem1'); // Select all style items
+        const backcolour2Items = document.querySelectorAll('.backcolourItem2'); // Select all style items
+        const backadjust2Items = document.querySelectorAll('.backadjustItem2'); // Select all style items
+        const backItems2 = document.querySelectorAll('.backItem2'); // Select all style items
+        const playerNumberInput = document.getElementById('playerNumber');
+        const playerNameInput = document.getElementById('playerName');
+        const playerSloganInput = document.getElementById('backSlogan');
+        const leftsleeveItems = document.querySelectorAll('.leftsleeveItem'); // Select all style items
+        const rightsleeveItems = document.querySelectorAll('.rightsleeveItem'); // Select all style items
+        const ghostimageItems = document.querySelectorAll('.ghostimageItem'); // Select all style items
+        const extraItems = document.querySelectorAll('.extrasItem'); // Select all style items
+        const backsponsorItemsimg = document.querySelectorAll('.backsponsorItemimg'); // Select all style items
+        
+        
+
+    
+    
+        styleItems.forEach(item => {
+          item.addEventListener('click', function() {
+            // Remove 'selected' class from all items
+            styleItems.forEach(i => i.classList.remove('selected'));
+    
+            // Add 'selected' class to the clicked item
+            item.classList.add('selected');
+    
+            // Set svgTitle to the data-title of the clicked item
+            svgTitle = item.getAttribute('data-title');
+            console.log("Selected SVG Title:", svgTitle); // For debugging
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        extraItems.forEach(item => {
+        item.addEventListener('click', function() {
+          // Toggle 'selected' class and set corresponding boolean flags
+          extrasTitle = item.getAttribute('data-title');
+
+          if (item.classList.contains('selected')) {
+              item.classList.remove('selected');
+              if (extrasTitle === 'stars') stars = false;
+              if (extrasTitle === 'line') line = false;
+              if (extrasTitle === 'lines') lines = false;
+              if (extrasTitle === 'diamond') diamond = false;
+              if (extrasTitle === 'squares') squares = false;
+              if (extrasTitle === 'stars1') stars1 = false;
+              if (extrasTitle === 'fancypattern') fancypattern = false;
+              if (extrasTitle === 'split') split = false;
+          } else {
+              item.classList.add('selected');
+              if (extrasTitle === 'stars') stars = true;
+              if (extrasTitle === 'line') line = true;
+              if (extrasTitle === 'lines') lines = true;
+              if (extrasTitle === 'diamond') diamond = true;
+              if (extrasTitle === 'squares') squares = true;
+              if (extrasTitle === 'stars1') stars1 = true;
+              if (extrasTitle === 'fancypattern') fancypattern = true;
+              if (extrasTitle === 'split') split = true;
+          }
+
+
+
+            
+    
+
+    
+            // Set svgTitle to the data-title of the clicked item
+            
+            console.log("Selected SVG Title:", svgTitle); // For debugging
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        leftsleeveItems.forEach(item => {
+          item.addEventListener('click', function() {
+            // Remove 'selected' class from all items
+            leftsleeveItems.forEach(i => i.classList.remove('selected'));
+    
+            // Add 'selected' class to the clicked item
+            item.classList.add('selected');
+    
+            // Set svgTitle to the data-title of the clicked item
+            leftsleeveTitle = item.getAttribute('data-title');
+            console.log("Selected SVG Title:", svgTitle); // For debugging
+            if (leftsleeveTitle === 'faacreddited'){
+              filesource2= "assets/textures/faacreddited11.png" 
+            };
+            if (leftsleeveTitle === 'faacreddited1'){
+              filesource2= "assets/textures/faacreddited12.png" 
+            };
+            if (leftsleeveTitle === 'faacreddited2'){
+              filesource2= "assets/textures/faacreddited22.png" 
+            };
+            if (leftsleeveTitle === 'southern'){
+              filesource2= "assets/textures/southernleague1.png" 
+            };
+            if (leftsleeveTitle === 'toolstation'){
+              filesource2= "assets/textures/toolstation1.png" 
+            };
+            
+            if (leftsleeveTitle === 'usefile'){
+              filesource2=uploadedFile2
+            };
+            
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        rightsleeveItems.forEach(item => {
+          item.addEventListener('click', function() {
+            // Remove 'selected' class from all items
+            rightsleeveItems.forEach(i => i.classList.remove('selected'));
+    
+            // Add 'selected' class to the clicked item
+            item.classList.add('selected');    
+            // Set svgTitle to the data-title of the clicked item
+            rightsleeveTitle = item.getAttribute('data-title');
+            
+            console.log("Selected SVG Title:", svgTitle); // For debugging
+            if (rightsleeveTitle === 'faacreddited'){
+              filesource3= "assets/textures/faacreddited11.png" 
+            };
+            if (rightsleeveTitle === 'faacreddited1'){
+              filesource3= "assets/textures/faacreddited12.png" 
+            };
+            if (rightsleeveTitle === 'faacreddited2'){
+              filesource3= "assets/textures/faacreddited22.png" 
+            };
+            if (rightsleeveTitle === 'southern'){
+              filesource3= "assets/textures/southernleague1.png" 
+            };
+            if (rightsleeveTitle === 'toolstation'){
+              filesource3= "assets/textures/toolstation1.png" 
+            };
+            
+            if (rightsleeveTitle === 'usefile'){
+              filesource3=uploadedFile3
+            };
+            console.log("Selected SVG Title:", svgTitle); // For debugging
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        backItems.forEach(item => {
+          item.addEventListener('click', function() {
+            // Remove 'selected' class from all items
+            backItems.forEach(i => i.classList.remove('selected'));
+    
+            // Add 'selected' class to the clicked item
+            item.classList.add('selected');
+    
+            // Set svgTitle to the data-title of the clicked item
+            numberFont= item.getAttribute('data-title');
+
+
+            
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        backItems1.forEach(item => {
+          item.addEventListener('click', function() {
+            // Remove 'selected' class from all items
+            backItems1.forEach(i => i.classList.remove('selected'));
+    
+            // Add 'selected' class to the clicked item
+            item.classList.add('selected');
+    
+            // Set svgTitle to the data-title of the clicked item
+            textFont= item.getAttribute('data-title');
+
+
+            
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        backItems2.forEach(item => {
+          item.addEventListener('click', function() {
+            // Remove 'selected' class from all items
+            backItems2.forEach(i => i.classList.remove('selected'));
+    
+            // Add 'selected' class to the clicked item
+            item.classList.add('selected');
+    
+            // Set svgTitle to the data-title of the clicked item
+            textFont2= item.getAttribute('data-title');
+
+
+            
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        backcolourItems.forEach(item => {
+          item.addEventListener('click', function() {
+            // Remove 'selected' class from all items
+            backcolourItems.forEach(i => i.classList.remove('selected'));
+    
+            // Add 'selected' class to the clicked item
+            item.classList.add('selected');
+    
+            // Set svgTitle to the data-title of the clicked item
+            numberColour= item.getAttribute('data-title');
+
+
+            
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        backcolour1Items.forEach(item => {
+          item.addEventListener('click', function() {
+            // Remove 'selected' class from all items
+            backcolour1Items.forEach(i => i.classList.remove('selected'));
+    
+            // Add 'selected' class to the clicked item
+            item.classList.add('selected');
+    
+            // Set svgTitle to the data-title of the clicked item
+            textColour= item.getAttribute('data-title');
+
+
+            
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        backcolour2Items.forEach(item => {
+          item.addEventListener('click', function() {
+            // Remove 'selected' class from all items
+            backcolour2Items.forEach(i => i.classList.remove('selected'));
+    
+            // Add 'selected' class to the clicked item
+            item.classList.add('selected');
+    
+            // Set svgTitle to the data-title of the clicked item
+            textColour2= item.getAttribute('data-title');
+
+
+            
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        badgeItems.forEach(item => {
+          item.addEventListener('click', function() {
+            badjust_x=0;
+            badjust_y=0;
+            // Remove 'selected' class from all items
+            badgeItems.forEach(i => i.classList.remove('selected'));
+    
+            // Add 'selected' class to the clicked item
+            item.classList.add('selected');
+    
+            // Set svgTitle to the data-title of the clicked item
+            badgeTitle = item.getAttribute('data-title');
+            
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        sponsorItems.forEach(item => {
+          item.addEventListener('click', function() {
+            sadjust_x=0;
+            sadjust_y=0;
+            // Remove 'selected' class from all items
+            sponsorItems.forEach(i => i.classList.remove('selected'));
+    
+            // Add 'selected' class to the clicked item
+            item.classList.add('selected');
+    
+            // Set svgTitle to the data-title of the clicked item
+            sponsorTitle = item.getAttribute('data-title');
+            
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        b_sizeItems.forEach(item => {
+          item.addEventListener('click', function() {
+            // Remove 'selected' class from all items
+            bstretch_x=1;
+            bstretch_y=1;
+            b_sizeItems.forEach(i => i.classList.remove('selected'));
+    
+            // Add 'selected' class to the clicked item
+            item.classList.add('selected');
+    
+            // Set svgTitle to the data-title of the clicked item
+            badge_sizeTitle = item.getAttribute('data-title');
+            
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        s_sizeItems.forEach(item => {
+          item.addEventListener('click', function() {
+            sstretch_x=1;
+            sstretch_x=1;
+            // Remove 'selected' class from all items
+            s_sizeItems.forEach(i => i.classList.remove('selected'));
+    
+            // Add 'selected' class to the clicked item
+            item.classList.add('selected');
+    
+            // Set svgTitle to the data-title of the clicked item
+            sponsor_sizeTitle = item.getAttribute('data-title');
+            
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        bs_sizeItems.forEach(item => {
+          item.addEventListener('click', function() {
+            
+            // Remove 'selected' class from all items
+            bs_sizeItems.forEach(i => i.classList.remove('selected'));
+    
+            // Add 'selected' class to the clicked item
+            item.classList.add('selected');
+    
+            // Set svgTitle to the data-title of the clicked item
+            backsponsor_sizeTitle = item.getAttribute('data-title');
+            
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        styleItems.forEach(item => {
+          item.addEventListener('click', function() {
+            // Remove 'selected' class from all items
+            styleItems.forEach(i => i.classList.remove('selected'));
+    
+            // Add 'selected' class to the clicked item
+            item.classList.add('selected');
+    
+            // Set svgTitle to the data-title of the clicked item
+            svgTitle = item.getAttribute('data-title');
+            console.log("Selected SVG Title:", svgTitle); // For debugging
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        
+        nobadgeItems.forEach(item => {
+          item.addEventListener('click', function() {
+            // Remove 'selected' class from all items
+            nobadgeItems.forEach(i => i.classList.remove('selected'));
+    
+            // Add 'selected' class to the clicked item
+            item.classList.add('selected');
+    
+            // Set svgTitle to the data-title of the clicked item
+            nobadgeTitle = item.getAttribute('data-title');
+            if (nobadgeTitle === 'nobadge'){
+              filesource=''
+            };
+            nobadgeTitle = item.getAttribute('data-title');
+            if (nobadgeTitle === 'usefile'){
+              filesource=uploadedFile
+            };
+            
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        ghostimageItems.forEach(item => {
+          item.addEventListener('click', function() {
+            // Remove 'selected' class from all items
+            ghostimageItems.forEach(i => i.classList.remove('selected'));
+    
+            // Add 'selected' class to the clicked item
+            item.classList.add('selected');
+    
+            // Set svgTitle to the data-title of the clicked item
+            ghostimageTitle = item.getAttribute('data-title');
+            if (ghostimageTitle === 'nobadge'){
+              filesource4='';
+              filesource5='';
+            };
+            ghostimageTitle = item.getAttribute('data-title');
+            if (ghostimageTitle === 'usefile'){
+              filesource4=uploadedFile4;
+              filesource5=uploadedFile5;
+            };
+            
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        sponsorimgItems.forEach(item => {
+          item.addEventListener('click', function() {
+            // Remove 'selected' class from all items
+            sponsorimgItems.forEach(i => i.classList.remove('selected'));
+    
+            // Add 'selected' class to the clicked item
+            item.classList.add('selected');
+            
+    
+            // Set svgTitle to the data-title of the clicked item
+            sponsorimgTitle = item.getAttribute('data-title');
+            console.log(sponsorimgTitle);
+            if (sponsorimgTitle === 'nosponsor'){
+              filesource1=''
+            };
+            
+            if (sponsorimgTitle === 'usefile'){
+              filesource1=uploadedFile1
+            };
+            
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        backsponsorItemsimg.forEach(item => {
+          item.addEventListener('click', function() {
+            // Remove 'selected' class from all items
+            backsponsorItemsimg.forEach(i => i.classList.remove('selected'));
+    
+            // Add 'selected' class to the clicked item
+            item.classList.add('selected');
+            
+    
+            // Set svgTitle to the data-title of the clicked item
+            backsponsorimgTitle = item.getAttribute('data-title');
+            
+            if (backsponsorimgTitle === 'nosponsor'){
+              filesource6=''
+            };
+            
+            if (backsponsorimgTitle === 'usefile'){
+              filesource6=uploadedFile6
+            };
+            
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        logoItems.forEach(item => {
+          item.addEventListener('click', function() {
+            adjust_y=0;
+            adjust_x=0;
+            // Remove 'selected' class from all items
+            logoItems.forEach(i => i.classList.remove('selected'));
+    
+            // Add 'selected' class to the clicked item
+            item.classList.add('selected');
+    
+            // Set svgTitle to the data-title of the clicked item
+            logoTitle = item.getAttribute('data-title');
+            console.log("Selected Logo Title:", logoTitle); // For debugging
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        sizeItems.forEach(item => {
+          item.addEventListener('click', function() {
+            stretch_x=1
+            stretch_y=1
+            // Remove 'selected' class from all items
+            sizeItems.forEach(i => i.classList.remove('selected'));
+    
+            // Add 'selected' class to the clicked item
+            item.classList.add('selected');
+    
+            // Set svgTitle to the data-title of the clicked item
+            sizeTitle = item.getAttribute('data-title');
+            console.log("Selected Logo Title:", sizeTitle); // For debugging
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        colourItems.forEach(item => {
+          item.addEventListener('click', function() {
+            // Remove 'selected' class from all items
+            colourItems.forEach(i => i.classList.remove('selected'));
+    
+            // Add 'selected' class to the clicked item
+            item.classList.add('selected');
+    
+            // Set svgTitle to the data-title of the clicked item
+            colourTitle = item.getAttribute('data-title');
+            console.log("Selected Colour Title:", colourTitle); // For debugging
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        colourItems1.forEach(item => {
+          item.addEventListener('click', function() {
+            // Remove 'selected' class from all items
+            colourItems1.forEach(i => i.classList.remove('selected'));
+    
+            // Add 'selected' class to the clicked item
+            item.classList.add('selected');
+    
+            // Set svgTitle to the data-title of the clicked item
+            colourTitle1 = item.getAttribute('data-title');
+            console.log("Selected Colour Title:", colourTitle); // For debugging
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        colourItems2.forEach(item => {
+          item.addEventListener('click', function() {
+            // Remove 'selected' class from all items
+            colourItems2.forEach(i => i.classList.remove('selected'));
+    
+            // Add 'selected' class to the clicked item
+            item.classList.add('selected');
+    
+            // Set svgTitle to the data-title of the clicked item
+            colourTitle2 = item.getAttribute('data-title');
+            console.log("Selected Colour Title:", colourTitle); // For debugging
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        adjustItems.forEach(item => {
+          item.addEventListener('click', function() {
+            // Remove 'selected' class from all items
+            
+            adjustTitle = item.getAttribute('data-title');
+            if (adjustTitle ==='up'){
+              adjust_y-=4
+            }
+            if (adjustTitle ==='down'){
+              adjust_y+=4
+            }
+            if (adjustTitle ==='left'){
+              adjust_x-=4
+            }
+            if (adjustTitle ==='right'){
+              adjust_x+=4
+              console.log('right',adjust_x)
+            }
+            if (adjustTitle ==='stretchup'){
+              stretch_y*=1.05
+              console.log('right',stretch_x)
+            }
+            if (adjustTitle ==='stretchright'){
+              stretch_x*=1.05
+              console.log('right',stretch_x)
+            }
+            if (adjustTitle ==='shrinkup'){
+              stretch_y*=0.95
+              console.log('right',stretch_x)
+            }
+            if (adjustTitle ==='shrinkright'){
+              stretch_x*=0.95
+              console.log('right',stretch_x)
+            }
+            if (adjustTitle ==='reset'){
+              stretch_x=1;
+              stretch_y=1
+              adjust_x=0;
+              adjust_y=0;
+              console.log('right',stretch_x)
+            }
+
+            
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        backadjustItems.forEach(item => {
+          item.addEventListener('click', function() {
+            // Remove 'selected' class from all items
+            
+            backadjustTitle = item.getAttribute('data-title');
+            if (backadjustTitle ==='up'){
+              backadjust_y-=4
+            }
+            if (backadjustTitle ==='down'){
+              backadjust_y+=4
+            }
+            if (backadjustTitle ==='left'){
+              backadjust_x-=4
+            }
+            if (backadjustTitle ==='right'){
+              backadjust_x+=4
+              console.log('right',adjust_x)
+            }
+            if (backadjustTitle ==='stretch'){
+              backstretch*=1.05
+              console.log('right',stretch_x)
+            }
+
+            if (backadjustTitle ==='shrink'){
+              backstretch*=0.95
+              console.log('right',stretch_x)
+            }
+            if (backadjustTitle ==='reset'){
+              backstretch=1;
+              backadjust_x=0;
+              backadjust_y=0;
+              console.log('right',stretch_x)
+            }
+
+
+            
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        backadjust1Items.forEach(item => {
+          item.addEventListener('click', function() {
+            // Remove 'selected' class from all items
+            
+            backadjustTitle1 = item.getAttribute('data-title');
+            if (backadjustTitle1 ==='up'){
+              textadjust_y-=4
+            }
+            if (backadjustTitle1 ==='spaceout'){
+              spaceletter+=1;
+            }
+            if (backadjustTitle1 ==='spacein'){
+              spaceletter-=1;
+            }
+            if (backadjustTitle1 ==='down'){
+              textadjust_y+=4
+            }
+            if (backadjustTitle1 ==='left'){
+              textadjust_x-=4
+            }
+            if (backadjustTitle1 ==='right'){
+              textadjust_x+=4
+              console.log('right',adjust_x)
+            }
+            if (backadjustTitle1 ==='stretch'){
+              textstretch*=1.05
+              console.log('right',stretch_x)
+            }
+
+            if (backadjustTitle1 ==='shrink'){
+              textstretch*=0.95
+              console.log('right',stretch_x)
+            }
+            if (backadjustTitle1 ==='reset'){
+              textstretch=1;
+              textadjust_x=0;
+              textadjust_y=0;
+              spaceletter=3;
+              console.log('right',stretch_x)
+            }
+            
+
+
+            
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        backadjust2Items.forEach(item => {
+          item.addEventListener('click', function() {
+            // Remove 'selected' class from all items
+            
+            backadjustTitle2 = item.getAttribute('data-title');
+            if (backadjustTitle2 ==='up'){
+              textadjust2_y-=4
+            }
+            if (backadjustTitle2 ==='spaceout'){
+              spaceletter2+=1;
+            }
+            if (backadjustTitle2 ==='spacein'){
+              spaceletter2-=1;
+            }
+            if (backadjustTitle2 ==='down'){
+              textadjust2_y+=4
+            }
+            if (backadjustTitle2 ==='left'){
+              textadjust2_x-=4
+            }
+            if (backadjustTitle2 ==='right'){
+              textadjust2_x+=4
+              console.log('right',adjust_x)
+            }
+            if (backadjustTitle2 ==='stretch'){
+              textstretch2*=1.05
+              console.log('right',stretch_x)
+            }
+
+            if (backadjustTitle2 ==='shrink'){
+              textstretch2*=0.95
+              console.log('right',stretch_x)
+            }
+            if (backadjustTitle2 ==='reset'){
+              textstretch2=1;
+              textadjust2_x=0;
+              textadjust2_y=0;
+              spaceletter2=3;
+              console.log('right',stretch_x)
+            }
+            
+
+
+            
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        b_adjustItems.forEach(item => {
+          item.addEventListener('click', function() {
+            // Remove 'selected' class from all items
+            
+            b_adjustTitle = item.getAttribute('data-title');
+            if (b_adjustTitle ==='up'){
+              badjust_y-=4
+            }
+            if (b_adjustTitle ==='down'){
+              badjust_y+=4
+            }
+            if (b_adjustTitle ==='left'){
+              badjust_x-=4
+            }
+            if (b_adjustTitle ==='right'){
+              badjust_x+=4
+              console.log('right',badjust_x)
+            }
+            if (b_adjustTitle ==='stretchup'){
+              bstretch_y*=1.05
+              console.log('right',bstretch_x)
+            }
+            if (b_adjustTitle ==='stretchright'){
+              bstretch_x*=1.05
+              console.log('right',bstretch_x)
+            }
+            if (b_adjustTitle ==='shrinkup'){
+              bstretch_y*=0.95
+              console.log('right',stretch_x)
+            }
+            if (b_adjustTitle ==='shrinkright'){
+              bstretch_x*=0.95
+              console.log('right',stretch_x)
+            }
+            if (b_adjustTitle ==='reset'){
+              btretch_x=1;
+              bstretch_y=1;
+              badjust_x=0;
+              badjust_y=0;
+              console.log('right',stretch_x)
+            }
+            
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        });
+        s_adjustItems.forEach(item => {
+          item.addEventListener('click', function() {
+            // Remove 'selected' class from all items
+            
+            s_adjustTitle = item.getAttribute('data-title');
+            if (s_adjustTitle ==='up'){
+              sadjust_y-=4
+            }
+            if (s_adjustTitle ==='down'){
+              sadjust_y+=4
+            }
+            if (s_adjustTitle ==='left'){
+              sadjust_x-=4
+            }
+            if (s_adjustTitle ==='right'){
+              sadjust_x+=4
+              console.log('right',sadjust_x)
+            }
+            if (s_adjustTitle ==='stretchup'){
+              sstretch_y*=1.05
+              console.log('right',stretch_x)
+            }
+            if (s_adjustTitle ==='stretchright'){
+              sstretch_x*=1.05
+              console.log('right',stretch_x)
+            }
+            if (s_adjustTitle ==='shrinkup'){
+              sstretch_y*=0.95
+              console.log('right',stretch_x)
+            }
+            if (s_adjustTitle ==='shrinkright'){
+              sstretch_x*=0.95
+              console.log('right',stretch_x)
+            }
+            if (s_adjustTitle ==='reset'){
+              sstretch_x=1;
+              sstretch_y=1;
+              sadjust_x=0;
+              sadjust_y=0;
+              console.log('right',stretch_x)
+            }
+            
+    
+            // Call getSvg and update the model after svgTitle is updated
+            getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+            jsonloader.load('assets/models/jersey.json', getJersey);
+            
+          });
+        
+        });
+
+        function updateTitles() {
+          numberTitle = playerNumberInput.value; // Update numberTitle with input value
+          textTitle = playerNameInput.value; // Update textTitle with input value
+          text2Title = playerSloganInput.value; // Update textTitle with input value
+
+          console.log("Updated numberTitle:", numberTitle);
+          console.log("Updated textTitle:", textTitle);
+          getSvg(svgTitle,logoTitle,sizeTitle,colourTitle,badge_sizeTitle,badgeTitle);
+          jsonloader.load('assets/models/jersey.json', getJersey);
+          
+
+          // Optionally, update the canvas or any other rendering here
+          // For example, if you have a function to redraw the canvas:
+          // drawCanvas();
+        }1
+        playerNumberInput.addEventListener('input', updateTitles);
+        playerNameInput.addEventListener('input', updateTitles);
+        playerSloganInput.addEventListener('input', updateTitles);
+
+        
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+
+
+        const initialRow = document.querySelector('.orderRow');
+        const inputFields = initialRow.querySelectorAll('input, select');
+        inputFields.forEach(input => {
+            input.addEventListener('input', function () {
+                recalculateTotals(); // Recalculate totals whenever any input changes
+            });
+        });
+        addDeleteRowEvent();
+        
+        const priceBreaks = [
+            { max: Infinity, price: 20 },
+            { max: 40, price: 22.5 },
+            { max: 20, price: 25 },
+            { max: 10, price: 27.5 },
+            { max: 5, price: 30 }
+        ];
+
+        
+
+        document.getElementById('addRowButton').addEventListener('click', function () {
+          const table = document.getElementById('orderTable').getElementsByTagName('tbody')[0];
+          const newRow = table.insertRow(); // Insert a new row at the end of the table body
+          newRow.classList.add('orderRow'); // Add the 'orderRow' class to the new row
+
+          // Add cells with input fields to the new row
+          const playerNumberCell = newRow.insertCell(0);
+          playerNumberCell.innerHTML = '<input type="number" class="playerNumber" placeholder="">';
+
+          const playerNameCell = newRow.insertCell(1);
+          playerNameCell.innerHTML = '<input type="text" class="playerName" placeholder="Enter name">';
+
+          const playerSizeCell = newRow.insertCell(2);
+          playerSizeCell.innerHTML = `
+              <select class="playerSize">
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+              </select>
+          `;
+
+          const playerQuantityCell = newRow.insertCell(3);
+          newRow.insertCell(4).innerHTML = '<button class="deleteRow">✖</button>'; // Add delete button
+          playerQuantityCell.innerHTML = '<input type="number" class="playerQuantity" placeholder="">';
+          const inputFields = newRow.querySelectorAll('input, select');
+          inputFields.forEach(input => {
+            input.addEventListener('input', function () {
+                recalculateTotals(); // Recalculate totals whenever any input changes
+            });
+          });
+          recalculateTotals();
+          addDeleteRowEvent();
+        });
+
+
+
+        // Function to save the orders
+        document.getElementById('saveOrdersButton').addEventListener('click', function () {
+          const orderData = [];
+          const table = document.getElementById('orderTable');
+          const rows = table.getElementsByClassName('orderRow'); // Get all rows with the 'orderRow' class
+
+          Array.from(rows).forEach(row => {
+              const playerNumber = row.querySelector('.playerNumber').value || ""; // Default to "" if empty
+              const playerName = row.querySelector('.playerName').value || ""; // Default to "" if empty
+              const playerSize = row.querySelector('.playerSize').value;
+              const playerQuantity = row.querySelector('.playerQuantity').value;
+
+              // Save the order even if playerNumber or playerName is empty
+              if (parseInt(playerQuantity) > 0) {
+                orderData.push({
+                    playerNumber,
+                    playerName,
+                    playerSize,
+                    playerQuantity
+                });
+              }
+          });
+          if (orderData.length > 0) {
+            console.log('Saved Orders:', orderData);
+            alert('Orders saved successfully!');
+            
+            addToBasket(orderData);
+
+    
+
+            
+            
+            // You can also send this data to the server or save it locally
+            const tbody = table.querySelector('tbody');
+            tbody.innerHTML = ''; // Clear all rows in the table body
+
+            // Optionally, you can also add a new empty row if needed
+            const newRow = tbody.insertRow(); // Insert a new row at the end of the table body
+            newRow.classList.add('orderRow'); // Add the 'orderRow' class to the new row
+
+            // Add cells with input fields to the new row
+            newRow.insertCell(0).innerHTML = '<input type="number" class="playerNumber" placeholder="">';
+            newRow.insertCell(1).innerHTML = '<input type="text" class="playerName" placeholder="Enter name">';
+            newRow.insertCell(2).innerHTML = `
+                <select class="playerSize">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+            `;
+            newRow.insertCell(3).innerHTML = '<input type="number" class="playerQuantity" placeholder="">';
+            newRow.insertCell(4).innerHTML = '<button class="deleteRow">✖</button>'; // Add delete button
+            const initialRow = document.querySelector('.orderRow');
+            const inputFields = initialRow.querySelectorAll('input, select');
+            inputFields.forEach(input => {
+              input.addEventListener('input', function () {
+                  recalculateTotals(); // Recalculate totals whenever any input changes
+                  addDeleteRowEvent();
+              });
+            });
+          
+          } else {
+            alert('No items in quantity to save.');
+          }
+        });
+        function sumPriceInBasket() {
+          const basketItemsContainer = document.getElementById('basketItems');
+          const basketTotalDisplay = document.getElementById('basketTotal');
+          let totalPriceInBasket = 0;
+
+          // Get all detailsContainer elements
+          const detailsContainers = basketItemsContainer.querySelectorAll('.detailsContainer');
+
+          // Iterate over each detailsContainer to find and sum the prices
+          detailsContainers.forEach(container => {
+              const priceText = container.textContent.trim(); // Get the text content
+              const priceMatch = priceText.match(/£(\d+\.\d{2})/); // Look for the price pattern using regex
+
+              if (priceMatch) {
+                  const price = parseFloat(priceMatch[1]); // Parse the price to a number
+                  totalPriceInBasket += price; // Add to the total price
+              }
+          });
+
+          // Update the basket total display with the new total price
+          basketTotalDisplay.textContent = `Total Cost: £${totalPriceInBasket.toFixed(2)}`;
+        }
+
+
+        function addToBasket(orderData) {
+          const basketItemsContainer = document.getElementById('basketItems');
+          const basketTotalDisplay = document.getElementById('basketTotal');
+          basketItemsContainer.classList.add('basketItemsContainer',);
+
+          let totalPricebasket = 0;
+
+          // Create a new div for this set of items with a custom class
+          const basketEntry = document.createElement('div');
+          basketEntry.classList.add('basketEntry', 'circlebox');
+          const imagetop = document.createElement('div');
+          imagetop.classList.add('imagetop', 'circlebox');
+
+          // Store the original camera position and target
+          const originalPosition = camera.position.clone();
+
+          // Define the four camera positions
+          const cameraPositions = [
+              new THREE.Vector3(0, 5, 15),
+              new THREE.Vector3(-4.3, 3.3, -14.8),
+              new THREE.Vector3(15.5, 2.6, 1.2),
+              new THREE.Vector3(-15.5, 4, -2)
+          ];
+
+          // Create a container for images
+          const imageContainer = document.createElement('div');
+          imageContainer.classList.add('imageContainer');
+
+          // Function to capture and add images to the image container
+          function captureImagesAndAddToBasket(index = 0) {
+              if (index < cameraPositions.length) {
+                  new TWEEN.Tween(camera.position)
+                      .to(cameraPositions[index], 2000)
+                      .onComplete(() => {
+                          const canvasImage = document.createElement('img');
+                          canvasImage.src = renderer.domElement.toDataURL();
+                          canvasImage.alt = "Shirt Design";
+                          canvasImage.style.width = '80%';
+                          canvasImage.style.height = "auto";
+                          canvasImage.style.display = index === 0 ? 'block' : 'none'; // Show only the first image initially
+
+                          // Append the image to the image container
+                          imageContainer.appendChild(canvasImage);
+
+                          // Capture the next image
+                          captureImagesAndAddToBasket(index + 1);
+                      })
+                      .start();
+              } else {
+                  // Restore original camera position
+                  camera.position.copy(originalPosition);
+
+                  // Add the item details after all images are captured
+                  totalPricebasket += totalPrice;
+
+                  orderData.forEach(item => {
+                      
+                      const detailsContainer = document.createElement('div');
+                      detailsContainer.classList.add('detailsContainer');
+
+                     
+                      detailsContainer.innerHTML = `
+                          <div>
+                              <i>${item.playerQuantity}x ${item.playerName} (${item.playerNumber}) (${item.playerSize})</i> 
+                          </div>
+                      `;
+
+                      // Append the image container and details container to the basket entry
+                      imagetop.appendChild(imageContainer)
+                      
+                    
+                      basketEntry.appendChild(detailsContainer);
+                      sumPriceInBasket();
+                  });
+                  const detailsContainer = document.createElement('div');
+                  detailsContainer.classList.add('detailsContainer');
+                  detailsContainer.innerHTML = `
+                          <div>
+                              <i> £${totalPrice.toFixed(2)}</i>
+                          </div>
+                  `;
+                  const closeButtonbasket = document.createElement('button');
+                  closeButtonbasket.classList.add('closeButtonbasket');
+                  closeButtonbasket.textContent = 'X'; // Cross mark
+                  closeButtonbasket.style.marginLeft = '10px'; // Space between details and close button
+                  closeButtonbasket.style.cursor = 'pointer'; // Change cursor to pointer
+                  detailsContainer.appendChild(closeButtonbasket);
+                  closeButtonbasket.addEventListener('click', function () {
+                    // Remove this basketEntry from the basket
+                    basketItemsContainer.removeChild(imagetop);
+                    sumPriceInBasket();
+                    
+                    // Update the total price
+           
+                    
+                  });
+                  basketEntry.appendChild(detailsContainer);
+                  imagetop.appendChild(basketEntry)
+                  sumPriceInBasket();
+
+                  // Update the total price
+                  basketTotalDisplay.textContent = `Total Cost: £${(parseFloat(basketTotalDisplay.textContent.split('£')[1]) + totalPricebasket).toFixed(2)}`;
+
+                  // Append the new basket entry to the basket items container
+                  basketItemsContainer.appendChild(imagetop);
+              }
+          }
+
+          // Start capturing images from the first position
+          captureImagesAndAddToBasket();
+
+          // Function to cycle through images on click
+          let currentImageIndex = 0;
+          imageContainer.addEventListener('click', () => {
+              const images = imageContainer.querySelectorAll('img');
+              images[currentImageIndex].style.display = 'none';
+              currentImageIndex = (currentImageIndex + 1) % images.length;
+              images[currentImageIndex].style.display = 'block';
+          });
+
+          // Render function to ensure scene updates during tweening
+          function animate() {
+              requestAnimationFrame(animate);
+              TWEEN.update();
+              renderer.render(scene, camera);
+          }
+          animate();
+        }
+
+
+
+
+
+        function recalculateTotals() {
+          const table = document.getElementById('orderTable');
+          const rows = table.getElementsByClassName('orderRow');
+          let totalQuantity = 0;
+
+          Array.from(rows).forEach(row => {
+              const quantity = parseInt(row.querySelector('.playerQuantity').value) || 0; // Get quantity
+              totalQuantity += quantity; // Add to total quantity
+          });
+
+          totalPrice = 0;
+          priceBreaks.forEach(breakPoint => {
+              console.log(totalQuantity,breakPoint.max)
+              if (totalQuantity <= breakPoint.max) {
+                  totalPrice = totalQuantity * breakPoint.price;
+              }
+          });
+
+          // Update the displayed total quantity and price
+          document.getElementById('totalQuantity').textContent = `Total Quantity: ${totalQuantity}`;
+          document.getElementById('totalPrice').textContent = `Total Price: £${totalPrice.toFixed(2)}`;
+          updateInfoBox(totalQuantity)
+        }
+        function addDeleteRowEvent() {
+          const deleteButtons = document.querySelectorAll('.deleteRow');
+          
+          deleteButtons.forEach(button => {
+              button.addEventListener('click', function() {
+                  const row = this.closest('tr'); // Find the closest row to the button
+                  row.remove(); // Remove the row from the table
+                  console.log("hereos")
+                  recalculateTotals()
+              });
+          });
+        }
+        function updateInfoBox(totalQuantity) {
+          const infoBox = document.getElementById('infoBox');
+          const priceBreaks = [
+              { max: 5, price: 30 },
+              { max: 10, price: 27.5 },
+              { max: 20, price: 25 },
+              { max: 40, price: 22.5 },
+              { max: Infinity, price: 20 },
+          ];
+
+          let currentPrice = null;
+          let nextBreakPoint = null;
+
+          // Find the current price based on totalQuantity and the next price break point
+          for (let i = 0; i < priceBreaks.length; i++) {
+              const breakPoint = priceBreaks[i];
+              const breakPoint1 = priceBreaks[i+1];
+
+              
+
+              if (totalQuantity < breakPoint.max) {
+                  nextBreakPoint = breakPoint;
+                  currentPrice = breakPoint.price; // Get the current price
+                  
+                  if (breakPoint1) {
+                    nexttierprice = breakPoint1.price; // Get the next tier price if it exists
+                  } else {
+                    infoBox.textContent = 'You are at the best price tier!'; // No next tier, at best price
+                    return; // Exit the function early since we're done
+                  }
+                  break;
+              }
+          }
+
+          if (nextBreakPoint) {
+              const quantityToNextBreak = (nextBreakPoint.max - totalQuantity)+1;
+              const savingsPerShirt = currentPrice - nexttierprice; // Calculate the savings per shirt
+
+              if (quantityToNextBreak > 0) {
+                  // Create message indicating current price and potential savings
+                  infoBox.textContent = `You are currently spending £${currentPrice.toFixed(2)} per shirt. Buy ${quantityToNextBreak} more to save £${savingsPerShirt.toFixed(2)} on each shirt!`;
+              } else {
+                  infoBox.textContent = 'You are at the best price tier!';
+              }
+          } else {
+              infoBox.textContent = 'You are at the highest price tier!';
+          }
+        }
+
+
+      
+
+
+      });
+
+      // Assuming these variables are defined elsewhere in your code
+
+
+      // Get input elements
+
+
+      // Function to update titles based on input values
+      
+
+      // Add event listeners for input changes
+
+      
+
+      
+    </script>
+    
+
+
+
+    
+        
+    
+    
+    
+    <!-- Working Three.js -->
+    <script src="lib/js/functions/colour.js"></script>
+    <script src="lib/js/functions/getSvg.js"></script>
+    <script src="lib/js/functions/getShapes.js"></script>
+    <script src="lib/js/functions/getLights.js"></script>
+    <script src="lib/js/functions/rotate.js"></script>
+    <script src="lib/js/functions/update.js"></script>
+    <script src="lib/js/functions/windows.js"></script>
+    <script src="lib/js/functions/windowResize.js"></script>
+    <script src="lib/js/init.js"></script>
+  </body>
+<!-- //////////////////////////////// -->
+</html>
