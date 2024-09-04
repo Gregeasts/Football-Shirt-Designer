@@ -1,5 +1,2 @@
-# Notaí
-
-https://www.npmjs.com/package/http-server
-
-https://www.youtube.com/watch?v=oa9m8321_nw
+Full Football Shirt Designer including multiple features.
+3D Model
