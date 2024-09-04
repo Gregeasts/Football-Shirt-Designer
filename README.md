@@ -6,6 +6,7 @@ Explore the app to create your own football shirts, and see them come to life in
 🚀 Live Demo
 Check out the live version of the Football Shirt Designer here: https://gregeasts.github.io/Football-Shirt-Designer/
 Football Shirt Designer
+Works most effectively on Computer Devices.
 
 🌟 Features
 3D Shirt Visualization: Design your football shirt in real-time using a 3D model.
